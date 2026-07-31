@@ -1,0 +1,617 @@
+% !TeX program = xelatex
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[a4paper,top=17mm,bottom=18mm,left=17mm,right=17mm,headheight=26pt,footskip=11mm]{geometry}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage[table]{xcolor}
+\usepackage{microtype}
+\usepackage{ragged2e}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage[most]{tcolorbox}
+\usepackage{xurl}
+\usepackage{hyperref}
+\usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{amssymb}
+
+\defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\setmainfont{Avenir Next}
+\setsansfont{Avenir Next}
+\setmonofont{DejaVu Sans Mono}
+\setCJKmainfont{Hiragino Sans GB}
+\setCJKsansfont{Hiragino Sans GB}
+\setCJKmonofont{Hiragino Sans GB}
+\newfontfamily\displayfont{Avenir Next}
+
+\definecolor{DeepNavy}{HTML}{183247}
+\definecolor{NavyTwo}{HTML}{23485D}
+\definecolor{MutedTeal}{HTML}{3D746F}
+\definecolor{SoftGold}{HTML}{C6A35B}
+\definecolor{WarmWhite}{HTML}{F7F4ED}
+\definecolor{Paper}{HTML}{FCFBF8}
+\definecolor{Mist}{HTML}{EAF0EF}
+\definecolor{PaleBlue}{HTML}{E9F0F4}
+\definecolor{PaleGold}{HTML}{F3EBD8}
+\definecolor{Ink}{HTML}{23313A}
+\definecolor{MutedInk}{HTML}{5D6A71}
+\definecolor{RuleGrey}{HTML}{D5DCDD}
+\definecolor{Alert}{HTML}{8A3E48}
+\definecolor{AlertTint}{HTML}{F7ECEE}
+
+\pagecolor{Paper}
+\color{Ink}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+\setlength{\emergencystretch}{2em}
+\raggedbottom
+\setcounter{secnumdepth}{0}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=DeepNavy,
+  urlcolor=MutedTeal,
+  pdfauthor={JS Insights},
+  pdftitle={王茹婷个人学术网站 - 交接与维护说明},
+  pdfsubject={GitHub、Cloudflare Pages 和网站内容维护},
+  pdfkeywords={王茹婷, 学术网站, GitHub, Cloudflare Pages, JS Insights}
+}
+\urlstyle{same}
+
+\graphicspath{{./assets/}}
+\newcommand{\jslogo}[1][height=5mm]{%
+  \IfFileExists{docs/assets/js-insights-logo-wide-pdf.png}{\includegraphics[#1]{docs/assets/js-insights-logo-wide-pdf.png}}{%
+    \IfFileExists{assets/js-insights-logo-wide-pdf.png}{\includegraphics[#1]{assets/js-insights-logo-wide-pdf.png}}{\textbf{JS INSIGHTS}}}%
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\jslogo[height=4mm]}
+\fancyhead[R]{\sffamily\scriptsize\color{MutedInk}王茹婷个人学术网站 - 交接说明}
+\fancyfoot[L]{\sffamily\scriptsize\color{MutedInk}\href{https://jsinsights.co.uk/services/academic-websites/}{jsinsights.co.uk/services/academic-websites}}
+\fancyfoot[R]{\sffamily\scriptsize\color{MutedInk}\thepage\ / \pageref*{LastPage}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\renewcommand{\headrule}{\vspace{2pt}{\color{RuleGrey}\rule{\headwidth}{0.4pt}}}
+\renewcommand{\footrule}{{\color{RuleGrey}\rule{\headwidth}{0.4pt}}\vspace{2pt}}
+
+\titleformat{\section}{\displayfont\bfseries\color{DeepNavy}\LARGE}{}{0pt}{}[\vspace{0.3em}{\color{SoftGold}\rule{16mm}{1.4pt}\color{RuleGrey}\rule{\dimexpr\linewidth-16mm\relax}{1.4pt}}]
+\titlespacing*{\section}{0pt}{0.9em}{0.65em}
+\titleformat{\subsection}{\sffamily\bfseries\color{DeepNavy}\large}{}{0pt}{}
+\titlespacing*{\subsection}{0pt}{0.75em}{0.22em}
+\titleformat{\subsubsection}{\sffamily\bfseries\color{NavyTwo}\normalsize}{}{0pt}{}
+\titlespacing*{\subsubsection}{0pt}{0.5em}{0.12em}
+
+\setlist[enumerate]{leftmargin=1.75em,itemsep=0.34em,topsep=0.25em,label=\textcolor{MutedTeal}{\sffamily\bfseries\arabic*.}}
+\setlist[itemize]{leftmargin=1.45em,itemsep=0.27em,topsep=0.25em,label=\textcolor{MutedTeal}{\small\textbullet}}
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
+\newcolumntype{C}{>{\Centering\arraybackslash}X}
+\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}p{#1}}
+\renewcommand{\arraystretch}{1.34}
+
+\tcbset{
+  base/.style={enhanced jigsaw,colback=white,colframe=RuleGrey,boxrule=0.55pt,arc=1.4mm,left=4mm,right=4mm,top=3.2mm,bottom=3.2mm,before skip=2.5mm,after skip=2.5mm},
+  quiet/.style={base,colback=WarmWhite},
+  teal/.style={base,colback=Mist,colframe=MutedTeal},
+  gold/.style={base,colback=PaleGold,colframe=SoftGold},
+  alert/.style={base,colback=AlertTint,colframe=Alert},
+  navy/.style={base,colback=DeepNavy,colframe=DeepNavy,coltext=white}
+}
+
+\lstdefinestyle{code}{
+  basicstyle=\ttfamily\scriptsize,
+  backgroundcolor=\color{PaleBlue},
+  frame=single,
+  rulecolor=\color{RuleGrey},
+  framesep=3mm,
+  breaklines=true,
+  breakatwhitespace=false,
+  showstringspaces=false,
+  columns=fullflexible,
+  keepspaces=true,
+  aboveskip=2.5mm,
+  belowskip=2.5mm
+}
+\lstset{style=code}
+
+\newcommand{\lead}[1]{{\large\color{NavyTwo}\RaggedRight #1\par}}
+\newcommand{\button}[1]{\tcbox[on line,colback=DeepNavy,colframe=DeepNavy,coltext=white,boxrule=0pt,arc=1.2mm,left=2mm,right=2mm,top=0.7mm,bottom=0.7mm]{\sffamily\bfseries\scriptsize #1}}
+\newcommand{\pathlabel}[1]{\tcbox[on line,colback=PaleBlue,colframe=RuleGrey,boxrule=0.4pt,arc=1mm,left=1.6mm,right=1.6mm,top=0.5mm,bottom=0.5mm]{\ttfamily\scriptsize #1}}
+\newcommand{\checkline}[1]{\(\square\)\hspace{0.5em}#1}
+
+\begin{document}
+
+\thispagestyle{empty}
+\begin{tcolorbox}[navy,left=11mm,right=11mm,top=11mm,bottom=11mm]
+  \jslogo[height=8mm]
+  \vspace{16mm}
+
+  {\sffamily\bfseries\footnotesize\color{SoftGold}ACADEMIC WEBSITES - CLIENT HANDOVER}\par
+  \vspace{4mm}
+  {\displayfont\bfseries\fontsize{29}{33}\selectfont 王茹婷个人学术网站\par}
+  \vspace{2mm}
+  {\displayfont\bfseries\fontsize{23}{27}\selectfont 交接、托管与内容更新说明\par}
+  \vspace{5mm}
+  {\large GitHub、Cloudflare Pages、Talks 和日常维护 - 按按钮一步一步操作。\par}
+  \vspace{17mm}
+
+  \begin{tcolorbox}[enhanced,colback=white!8,colframe=white!18,coltext=white,boxrule=0.5pt,arc=1.2mm,left=4mm,right=4mm,top=3mm,bottom=3mm]
+    \textbf{网站预览}\par
+    \href{https://rutingwang-website.pages.dev/}{rutingwang-website.pages.dev}\par\vspace{1mm}
+    \textbf{目前的私人 GitHub 仓库}\par
+    \href{https://github.com/Jiajing-Sun/rutingwang-website}{github.com/Jiajing-Sun/rutingwang-website}
+  \end{tcolorbox}
+  \vfill
+  {\small JS Insights 制作\hfill 版本 1.0 - 2026 年 7 月 21 日}
+\end{tcolorbox}
+
+\vfill
+\begin{center}
+{\small\color{MutedInk}请把这份 PDF 和网站 ZIP 备份包放在一起。不要在文件中保存账号密码。}
+\end{center}
+\clearpage
+
+\section{先看这里 - 一分钟明白整个流程}
+
+\lead{不需要学编程。只需要知道内容放在哪里、点哪个按钮保存、去哪里检查结果。}
+
+\begin{tcolorbox}[teal]
+\begin{center}
+\begin{tabularx}{\linewidth}{C c C c C}
+\textbf{1. GitHub} & \Large$\longrightarrow$ & \textbf{2. Cloudflare} & \Large$\longrightarrow$ & \textbf{3. 网站}\\
+放网站文件的文件柜 && 自动发布工具 && 访客看到的结果\\
+\end{tabularx}
+\end{center}
+\end{tcolorbox}
+
+\subsection{平时更新只有四步}
+
+\begin{tcolorbox}[gold]
+在 GitHub 改一个文件 \(\rightarrow\) 点 \button{Commit changes} \(\rightarrow\) 等 Cloudflare \(\rightarrow\) 刷新网站。
+\end{tcolorbox}
+
+\subsection{开始前准备}
+
+\checkline{茹婷有自己的 GitHub 账号。}\par
+\checkline{茹婷有自己的 Cloudflare 账号。}\par
+\checkline{JS Insights 提供的 ZIP 备份包已经保存。}\par
+\checkline{账号使用离开学校后仍会长期保留的邮箱。}
+
+\subsection{五条最重要的安全规则}
+
+\begin{enumerate}
+  \item 每次只改一件小事情。
+  \item 保存后等 1-3 分钟，再检查网站。
+  \item 只改本说明列出的文件。
+  \item 不要把密码、验证码、API key 或私人资料写进 GitHub。
+  \item Cloudflare 变红时先停止，把完整截图发给 JS Insights。
+\end{enumerate}
+
+\begin{tcolorbox}[quiet]
+\textbf{最省心的长期安排}\par
+GitHub、Cloudflare 和个人域名都放在茹婷自己名下。JS Insights 保留 collaborator 权限即可，不需要共享密码。
+\end{tcolorbox}
+
+\clearpage
+\section{把网站放到茹婷自己的 GitHub}
+
+\lead{有两个方法。方法 A 最短并保留完整历史，建议优先使用。方法 B 从 ZIP 新建一份独立副本。}
+
+\subsection{方法 A - 转移现有 repository（推荐）}
+
+\subsubsection{茹婷先做}
+\begin{enumerate}
+  \item 登录 \href{https://github.com/}{github.com}。
+  \item 打开右上角账号菜单，复制准确的 GitHub username。
+  \item 把 username 发给佳婧。
+  \item 收到 GitHub 转移邮件后，在 24 小时内接受。
+\end{enumerate}
+
+\subsubsection{佳婧完成转移}
+\begin{enumerate}
+  \item 打开 \href{https://github.com/Jiajing-Sun/rutingwang-website}{目前的私人 repository}。
+  \item 点 \button{Settings}。
+  \item 在 \textbf{General} 页面滑到最下面。
+  \item 在红色 \textbf{Danger Zone} 中找到 \textbf{Transfer repository}。
+  \item 输入茹婷准确的 GitHub username。
+  \item GitHub 要求确认时输入 \pathlabel{rutingwang-website}。
+  \item 确认后，茹婷在邮件中接受。
+\end{enumerate}
+
+\begin{tcolorbox}[teal]
+转移后，原 owner 通常会自动成为 collaborator。交付的 ZIP 仍是一份独立备份。
+\end{tcolorbox}
+
+\subsection{方法 B - 从 ZIP 新建私人 repository}
+
+\begin{enumerate}
+  \item 从 \href{https://desktop.github.com/}{desktop.github.com} 安装 GitHub Desktop，用茹婷账号登录。
+  \item 解压 \pathlabel{ruting-wang-website-js-insights-handover-2026-07-21.zip}。
+  \item 菜单选择 \textbf{File > Add Local Repository...}。
+  \item 点 \textbf{Choose...}，选择解压后的文件夹。
+  \item 如果提示不是 repository，点 \textbf{create a repository}。
+  \item 名称用 \pathlabel{rutingwang-website}，branch 用 \pathlabel{main}。
+  \item 在 \textbf{Summary} 填 \pathlabel{Initial website handover}。
+  \item 点 \button{Commit to main}。
+  \item 点 \button{Publish repository}，保持 \textbf{Keep this code private} 选中。
+\end{enumerate}
+
+\begin{tcolorbox}[alert]
+\textbf{不要只把 ZIP 当作一个文件上传。}\par
+Cloudflare 需要 ZIP 解压后的所有文件夹。最终 GitHub 地址应类似：\path{https://github.com/RUTING-USERNAME/rutingwang-website}。
+\end{tcolorbox}
+
+\clearpage
+\section{用 Cloudflare Pages 发布网站}
+
+\lead{Cloudflare 只需连接 GitHub 一次。以后 main branch 每次保存，网站都会自动重新发布。}
+
+\begin{enumerate}
+  \item 登录 \href{https://dash.cloudflare.com/}{dash.cloudflare.com}。
+  \item 打开 \textbf{Workers \& Pages}。
+  \item 点 \button{Create application}。
+  \item 选择 \textbf{Pages} 标签。
+  \item 点 \button{Import an existing Git repository}。
+  \item 选择 \textbf{GitHub} 并授权 Cloudflare。
+  \item GitHub 询问权限时，只选择 \pathlabel{rutingwang-website}。
+  \item 回到 Cloudflare，选择该 repository，点 \button{Begin setup}。
+\end{enumerate}
+
+\subsection{下面的内容照抄}
+
+\begin{tcolorbox}[quiet]
+\begin{tabularx}{\linewidth}{L{47mm}Y}
+\toprule
+\textbf{Cloudflare 输入框} & \textbf{填写内容}\\
+\midrule
+Project name & \texttt{ruting-wang-academic}，或其他可用名称\\
+Production branch & \texttt{main}\\
+Framework preset & \texttt{Astro}\\
+Build command & \texttt{npm run build}\\
+Build directory & \texttt{dist}\\
+\bottomrule
+\end{tabularx}
+\end{tcolorbox}
+
+如果显示 \textbf{Environment variables}，添加：
+
+\begin{tcolorbox}[quiet]
+\begin{tabularx}{\linewidth}{L{47mm}Y}
+\toprule
+\textbf{Variable} & \textbf{Value}\\
+\midrule
+\texttt{NODE\_VERSION} & \texttt{20}\\
+\texttt{BASE\_PATH} & \texttt{/}\\
+\texttt{SITE\_URL} & Cloudflare 最终网址，例如 \texttt{https://ruting-wang-academic.pages.dev}\\
+\bottomrule
+\end{tabularx}
+\end{tcolorbox}
+
+\begin{enumerate}[start=9]
+  \item 点 \button{Save and Deploy}。
+  \item 等待绿色 \textbf{Success}。
+  \item 点 \textbf{Visit site}，把每个页面打开一次。
+\end{enumerate}
+
+\begin{tcolorbox}[gold]
+\textbf{第一次部署变红怎么办}\par
+只检查 branch 是 \texttt{main}、command 是 \texttt{npm run build}、directory 是 \texttt{dist}。三项正确时不要乱改，把红色错误截图发给 JS Insights。
+\end{tcolorbox}
+
+\clearpage
+\section{个人域名和日常保存方法}
+
+\subsection{以后连接个人域名}
+
+没有域名时先用 \texttt{pages.dev} 地址完全没问题。
+
+\begin{enumerate}
+  \item Cloudflare > \textbf{Workers \& Pages}。
+  \item 打开茹婷的网站项目。
+  \item 点 \textbf{Custom domains}。
+  \item 点 \button{Set up a domain}。
+  \item 输入域名，例如 \texttt{rutingwang.com}。
+  \item 按 Cloudflare 显示的 DNS 指示操作。
+  \item 等状态变成 Active。
+  \item 把 \texttt{SITE\_URL} 改成最终网址并重新部署。
+\end{enumerate}
+
+\begin{tcolorbox}[teal]
+根域名可能需要使用 Cloudflare nameservers；\texttt{www} 子域名可能需要 CNAME。以 Cloudflare 当时显示的指示为准。
+\end{tcolorbox}
+
+\subsection{平时修改后的固定保存步骤}
+
+\begin{enumerate}
+  \item 在浏览器打开 GitHub repository。
+  \item 找到本说明列出的文件。
+  \item 点文件右上角的\textbf{铅笔图标}。
+  \item 只改需要修改的文字。
+  \item 点 \button{Commit changes...}。
+  \item 填一句说明，例如 \pathlabel{Add October seminar}。
+  \item 选择 \textbf{Commit directly to the main branch}。
+  \item 点绿色 \button{Commit changes}。
+  \item Cloudflare > 项目 > \textbf{Deployments}，等待绿色 \textbf{Success}。
+  \item 刷新网站。
+\end{enumerate}
+
+\begin{tcolorbox}[quiet]
+仍显示旧内容时，等一分钟再刷新一次。不要把同一修改连续重复提交。
+\end{tcolorbox}
+
+\clearpage
+\section{添加 Talk - 最常用的内容更新}
+
+\lead{Talks 由一个很小的文件控制，不需要修改页面设计。}
+
+在 GitHub 打开：
+
+\begin{center}
+\pathlabel{src/data/talks.json}
+\end{center}
+
+\subsection{添加第一条 Talk}
+
+\begin{enumerate}
+  \item 依次打开 \textbf{src}、\textbf{data}、\textbf{talks.json}。
+  \item 点铅笔图标。
+  \item 找到这一行：
+\end{enumerate}
+
+\begin{lstlisting}
+"items": [],
+\end{lstlisting}
+
+只把这一行替换成：
+
+\begin{lstlisting}
+"items": [
+  {
+    "date": "2026-10-15",
+    "title": "The title of the talk",
+    "event": "Finance Seminar Series",
+    "venue": "University name, City",
+    "kind": "Invited seminar",
+    "href": ""
+  }
+],
+\end{lstlisting}
+
+\begin{enumerate}[start=4]
+  \item 把示例文字换成准确资料。
+  \item 没有公开链接时保留 \texttt{"href": ""}。
+  \item 点 \button{Commit changes...}，说明填 \pathlabel{Add first talk}。
+\end{enumerate}
+
+\begin{tcolorbox}[teal]
+Cloudflare 完成后，这条 Talk 会出现在 \textbf{Talks} 页面和 \textbf{Research} 页面底部。
+\end{tcolorbox}
+
+\subsection{每个字段填什么}
+
+\begin{tabularx}{\linewidth}{L{25mm}Y L{43mm}}
+\toprule
+\textbf{字段} & \textbf{填写内容} & \textbf{示例}\\
+\midrule
+\texttt{date} & 年-月-日 & \texttt{2026-10-15}\\
+\texttt{title} & 演讲准确标题 & Measuring Carbon Risk Dynamics\\
+\texttt{event} & 会议、seminar 或 workshop & Finance Seminar Series\\
+\texttt{venue} & 学校和城市，或 Online & University of X, London\\
+\texttt{kind} & 演讲类型 & Invited talk\\
+\texttt{href} & 公开链接，没有则留空 & \texttt{https://...} 或 \texttt{""}\\
+\bottomrule
+\end{tabularx}
+
+\clearpage
+\section{Talks - 添加第二条、修改和删除}
+
+\subsection{添加第二条 Talk}
+
+复制第一段从 \texttt{\{} 到 \texttt{\}} 的全部内容，粘贴在下面。两段之间必须有一个逗号：
+
+\begin{lstlisting}
+"items": [
+  {
+    "date": "2026-10-15",
+    "title": "First talk title",
+    "event": "First event",
+    "venue": "First venue",
+    "kind": "Invited seminar",
+    "href": ""
+  },
+  {
+    "date": "2026-09-03",
+    "title": "Second talk title",
+    "event": "Second event",
+    "venue": "Second venue",
+    "kind": "Conference presentation",
+    "href": "https://example.com/event"
+  }
+],
+\end{lstlisting}
+
+最新的 Talk 放在最上面。
+
+\subsection{修改或删除 Talk}
+
+\begin{itemize}
+  \item 修改：只改引号里面的文字。
+  \item 删除：删除该条完整的 \texttt{\{ ... \}}。
+  \item 还有两条时，两段之间保留一个逗号。
+  \item 全部删除后，恢复成 \texttt{"items": [],}。
+\end{itemize}
+
+\begin{tcolorbox}[gold]
+\textbf{JSON 最容易出错的四件事}
+\begin{enumerate}
+  \item 使用直的英文双引号：\texttt{"text"}。
+  \item 不要删除字段名后面的冒号。
+  \item 两条 Talk 之间有逗号，最后一条后面没有逗号。
+  \item 不要修改文件底部的 \texttt{template}。
+\end{enumerate}
+\end{tcolorbox}
+
+\subsection{最简单的支持请求}
+
+不放心时，直接把下面六行发给 JS Insights：
+
+\begin{lstlisting}
+Date / 日期:
+Talk title / 标题:
+Event / 活动:
+Venue / 地点:
+Type of talk / 类型:
+Public link / 公开链接:
+\end{lstlisting}
+
+\clearpage
+\section{Publications 和其他网站内容}
+
+\subsection{新增已经发表的 journal article}
+
+打开 \pathlabel{src/data/publications.ts}。正式发表放在 \texttt{publications}；under review 放在 \texttt{workingPapers}。
+
+复制一个相似区块，再替换为准确资料：
+
+\begin{lstlisting}
+{
+  year: 2027,
+  title: 'Exact article title',
+  authors: 'Wang, R., & Coauthor, A.',
+  venue: 'Journal Name',
+  detail: '12(3), 100-120',
+  doi: '10.1234/example.2027.001',
+  featured: false,
+  category: 'journal',
+},
+\end{lstlisting}
+
+\begin{itemize}
+  \item \texttt{doi} 只填 DOI，不要加 \texttt{https://doi.org/}。
+  \item 作者顺序、期刊和卷期页码必须使用正式记录。
+  \item 只有想放到 selected publications 时才使用 \texttt{featured: true}。
+  \item 每条最后的 \texttt{\},} 不要漏掉逗号。
+\end{itemize}
+
+\begin{tcolorbox}[alert]
+Publication 很容易写错。资料不确定时，把 DOI 或 publisher link 发给 JS Insights，不要猜。
+\end{tcolorbox}
+
+\subsection{其他内容在哪个文件}
+
+\begin{tabularx}{\linewidth}{Y L{72mm}}
+\toprule
+\textbf{内容} & \textbf{文件}\\
+\midrule
+姓名、职位、学校、邮箱、profile links & \texttt{src/data/site.ts}\\
+Research areas 和 grants & \texttt{src/data/research.ts}\\
+Publications 和 working papers & \texttt{src/data/publications.ts}\\
+Talks & \texttt{src/data/talks.json}\\
+Teaching 和 Quantinar courses & \texttt{src/pages/teaching.astro}\\
+Editorial service 和 refereeing & \texttt{src/pages/service.astro}\\
+照片 & \texttt{public/images/ruting-wang-portrait.webp}\\
+Short 和 full CV PDFs & \texttt{public/docs/}\\
+\bottomrule
+\end{tabularx}
+
+\clearpage
+\section{CV、照片和不要直接改的文件}
+
+\subsection{更新 CV}
+
+公开 PDF 文件名必须保持不变：
+
+\begin{lstlisting}
+public/docs/ruting-wang-short-cv.pdf
+public/docs/ruting-wang-full-cv.pdf
+\end{lstlisting}
+
+网站还提供 LaTeX source。最安全的办法是把新资料发给 JS Insights，一次同步 short PDF、full PDF 和两份 LaTeX。
+
+\begin{tcolorbox}[alert]
+不要把家庭地址、私人电话、签名、referee details 或其他私人资料放进公开网站文件夹。
+\end{tcolorbox}
+
+\subsection{更新照片}
+
+文件名必须继续使用：
+
+\begin{center}
+\pathlabel{public/images/ruting-wang-portrait.webp}
+\end{center}
+
+建议由 JS Insights 处理裁剪和 WebP 转换，避免手机和电脑上的构图出现问题。
+
+\subsection{茹婷不要直接修改}
+
+\begin{lstlisting}
+src/components/
+src/layouts/
+src/styles/
+astro.config.mjs
+package.json
+package-lock.json
+.github/
+\end{lstlisting}
+
+这些文件控制设计、字体、手机布局、SEO 和部署。
+
+\subsection{账号安全}
+
+\begin{itemize}
+  \item GitHub 和 Cloudflare 开启 two-factor authentication。
+  \item GitHub repository 保持 private。
+  \item 个人域名注册在茹婷自己名下。
+  \item ZIP 备份保存在两个安全位置。
+  \item 给 JS Insights collaborator access，不要共享密码。
+\end{itemize}
+
+\clearpage
+\section{出错时不要慌}
+
+\subsection{修改成功的三个绿色信号}
+
+\begin{enumerate}
+  \item GitHub 中能看到刚才的修改。
+  \item Cloudflare 显示绿色 \textbf{Success}。
+  \item 刷新网站后能看到新内容。
+\end{enumerate}
+
+\subsection{Cloudflare 显示红色 failure}
+
+\begin{tcolorbox}[alert]
+\begin{enumerate}
+  \item 停止继续修改。
+  \item 截图红色 deployment 和完整 error text。
+  \item 记下刚才的 GitHub commit message。
+  \item 一起发给 JS Insights。
+\end{enumerate}
+新版本失败时，上一个成功版本通常仍会正常在线。
+\end{tcolorbox}
+
+\subsection{官方帮助页面}
+
+\begin{itemize}
+  \item \href{https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files}{GitHub - 修改文件}
+  \item \href{https://docs.github.com/en/desktop/overview/creating-your-first-repository-using-github-desktop}{GitHub - 使用 GitHub Desktop 发布}
+  \item \href{https://docs.github.com/en/repositories/creating-and-managing-repositories/transferring-a-repository}{GitHub - 转移 repository}
+  \item \href{https://developers.cloudflare.com/pages/framework-guides/deploy-an-astro-site/}{Cloudflare - 部署 Astro 到 Pages}
+  \item \href{https://developers.cloudflare.com/pages/configuration/git-integration/}{Cloudflare - Git integration}
+  \item \href{https://developers.cloudflare.com/pages/configuration/custom-domains/}{Cloudflare - custom domains}
+\end{itemize}
+
+\vfill
+\begin{tcolorbox}[navy,left=7mm,right=7mm,top=6mm,bottom=6mm]
+  {\Large\bfseries JS Insights Academic Websites}\par\vspace{1.5mm}
+  \href{https://jsinsights.co.uk/services/academic-websites/}{jsinsights.co.uk/services/academic-websites}\par
+  \href{mailto:contact@jsinsights.co.uk}{contact@jsinsights.co.uk}\par\vspace{3mm}
+  需要修改时，请发送准确文字、相关链接或 DOI，以及要放在哪个页面。不要发送账号密码。
+\end{tcolorbox}
+
+\end{document}

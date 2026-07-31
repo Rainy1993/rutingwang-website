@@ -1,0 +1,12 @@
+{
+  "instructions": "Copy the template object into items and replace every field with verified information. The Talks page shows a short placeholder while items is empty.",
+  "items": [],
+  "template": {
+    "date": "YYYY-MM-DD",
+    "title": "Talk title",
+    "event": "Conference, seminar or workshop",
+    "venue": "Institution and city",
+    "kind": "Invited talk",
+    "href": ""
+  }
+}

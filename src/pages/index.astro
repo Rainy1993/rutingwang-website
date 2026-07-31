@@ -1,0 +1,182 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProfileIcon from '../components/ProfileIcon.astro';
+import PublicationItem from '../components/PublicationItem.astro';
+import { site, appointments, education } from '../data/site';
+import { researchThemes } from '../data/research';
+import { publications } from '../data/publications';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const featured = publications.filter((pub) => pub.featured);
+const description = `${site.name} is a finance researcher working on financial risk, digital assets, climate finance, corporate finance and machine learning.`;
+---
+
+<BaseLayout title={site.name} fullTitle={`${site.name} — Finance researcher`} description={description} type="profile">
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="hero-code mono">FIN / ML / RISK <span aria-hidden="true">—</span> 2026</p>
+        <h1>{site.name}<span lang="zh-Hans">{site.nameZh}</span></h1>
+        <p class="hero-role">{site.role}</p>
+        <p class="hero-affiliation">{site.affiliation}</p>
+        <p class="hero-lede">{site.summary}</p>
+        <div class="button-row hero-buttons">
+          <a class="button" href={`${base}/research`}>Explore research <span aria-hidden="true">→</span></a>
+          <a class="button secondary" href={`${base}/publications`}>View publications</a>
+          <a class="button secondary" href={`${base}/docs/ruting-wang-short-cv.pdf`} target="_blank" rel="noopener noreferrer">Short CV <span aria-hidden="true">↓</span><span class="visually-hidden"> (2-page PDF, opens in a new tab)</span></a>
+          <a class="button secondary" href={`${base}/docs/ruting-wang-full-cv.pdf`} target="_blank" rel="noopener noreferrer">Full CV <span aria-hidden="true">↓</span><span class="visually-hidden"> (3-page PDF, opens in a new tab)</span></a>
+        </div>
+      </div>
+
+      <aside class="hero-aside" aria-label="Portrait and academic profiles">
+        <div class="portrait-wrap">
+          <img src={`${base}/images/ruting-wang-portrait.webp`} width="724" height="1086" alt="Ruting Wang" fetchpriority="high" />
+          <div class="portrait-caption"><span>Ruting Wang</span><span class="mono">RW · 01</span></div>
+        </div>
+        <nav class="profile-row" aria-label="Academic profiles">
+          {site.profiles.slice(0, 4).map((profile) => (
+            <a href={profile.href} target="_blank" rel="me noopener noreferrer" aria-label={`${profile.label} (opens in a new tab)`}>
+              <ProfileIcon name={profile.icon}/><span>{profile.short}</span>
+            </a>
+          ))}
+        </nav>
+      </aside>
+    </div>
+  </section>
+
+  <section class="index-strip" aria-labelledby="focus-title">
+    <div class="container focus-grid">
+      <div class="focus-heading">
+        <p class="eyebrow">Research index</p>
+        <h2 id="focus-title">Five connected lines of enquiry</h2>
+      </div>
+      <ol class="focus-list" role="list">
+        {researchThemes.map((theme) => (
+          <li><span class="mono">{theme.ref}</span><a href={`${base}/research#theme-${theme.ref}`}>{theme.title}</a></li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="profile-title">
+    <div class="container profile-grid">
+      <div class="profile-copy">
+        <p class="eyebrow">Profile</p>
+        <h2 id="profile-title">Finance, computation and the changing architecture of risk</h2>
+        <div class="prose">
+          <p>My research connects quantitative finance with questions about how markets allocate capital. I work on systemic and network risk, digital assets, climate-related financial risk, corporate debt and institutional reform.</p>
+          <p>Across these areas, I use machine learning and causal inference to make complex risk transmission more measurable — from financial-institution networks and cryptocurrency markets to carbon exposure and bond-market reform.</p>
+        </div>
+      </div>
+      <dl class="profile-facts">
+        <div><dt>Primary fields</dt><dd>Financial risk, digital finance, corporate finance</dd></div>
+        <div><dt>Methods</dt><dd>Machine learning, causal inference, network analysis</dd></div>
+        <div><dt>Current bases</dt><dd>Hong Kong · Shenzhen · Bucharest</dd></div>
+        <div><dt>PhD</dt><dd>Finance, Sun Yat-sen University</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section section-alt" aria-labelledby="selected-title">
+    <div class="container">
+      <header class="section-heading">
+        <div><p class="eyebrow">Selected work</p><h2 id="selected-title">Published research</h2></div>
+        <p class="section-note">Three peer-reviewed articles with verified DOI links. The Publications page separates published work from ongoing research.</p>
+      </header>
+      <div>{featured.map((pub) => <PublicationItem publication={pub}/>)}</div>
+      <div class="button-row section-action"><a class="button secondary" href={`${base}/publications`}>Complete record <span aria-hidden="true">→</span></a></div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="path-title">
+    <div class="container">
+      <header class="section-heading">
+        <div><p class="eyebrow">Academic path</p><h2 id="path-title">Appointments &amp; education</h2></div>
+        <p class="section-note">Current appointments and degrees, drawn from the CV dated 20 July 2026.</p>
+      </header>
+      <div class="path-grid">
+        <div>
+          <h3 class="path-label">Appointments</h3>
+          <div class="timeline">
+            {appointments.map((item) => (
+              <article class="timeline-item"><p class="timeline-date mono">{item.period}</p><div><h3>{item.role}</h3><p>{item.organisation}</p>{item.detail && <p class="muted">{item.detail}</p>}</div></article>
+            ))}
+          </div>
+        </div>
+        <div>
+          <h3 class="path-label">Education</h3>
+          <div class="timeline">
+            {education.map((item) => (
+              <article class="timeline-item"><p class="timeline-date mono">{item.period}</p><div><h3>{item.degree}</h3><p>{item.institution}</p>{item.detail && <p class="muted dissertation">{item.detail}</p>}</div></article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-band">
+    <div class="container contact-band-grid">
+      <div><p class="eyebrow">Contact</p><h2>Research collaboration and academic enquiries</h2></div>
+      <div><p>For questions about current work in financial risk, digital assets, climate finance or machine learning.</p><div class="button-row"><a class="button" href={`mailto:${site.email}`}>Email Ruting</a><a class="button secondary" href={`${base}/contact`}>All contact details</a></div></div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero { padding-block: clamp(3rem, 6vw, 6.5rem); }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(17rem, 0.7fr); gap: clamp(2rem, 6vw, 6rem); align-items: center; }
+  .hero-code { color: var(--signal); font-size: 0.7rem; letter-spacing: 0.12em; margin-bottom: 1.4rem; }
+  .hero-copy h1 { max-width: 8ch; font-size: var(--step-5); }
+  .hero-copy h1 span { display: block; margin-top: 0.65rem; color: var(--accent); font-family: var(--font-sans); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.18em; }
+  .hero-role { margin-top: 1.6rem; color: var(--accent-deep); font-family: var(--font-serif); font-size: var(--step-2); font-weight: 600; }
+  .hero-affiliation { margin-top: 0.25rem; color: var(--muted); font-size: 0.9rem; }
+  .hero-lede { max-width: 50ch; margin-top: 1.45rem; font-family: var(--font-serif); font-size: var(--step-1); line-height: 1.5; color: var(--ink-soft); }
+  .hero-buttons { margin-top: 2rem; }
+  .hero-aside { max-width: 25rem; justify-self: end; }
+  .portrait-wrap { border: 1px solid var(--rule); background: var(--surface); padding: 0.65rem; box-shadow: var(--shadow); }
+  .portrait-wrap img { width: 100%; aspect-ratio: 2 / 2.55; object-fit: cover; object-position: 50% 30%; filter: saturate(0.84) contrast(1.02); }
+  .portrait-caption { display: flex; justify-content: space-between; gap: 1rem; padding: 0.55rem 0.2rem 0.05rem; color: var(--muted); font-size: 0.7rem; }
+  .profile-row { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 0.45rem; margin-top: 0.7rem; }
+  .profile-row a { display: grid; justify-items: center; gap: 0.32rem; padding: 0.6rem 0.25rem; border: 1px solid var(--rule); border-radius: var(--radius); background: var(--surface); color: var(--muted); font-size: 0.64rem; font-weight: 600; text-decoration: none; }
+  .profile-row a:hover { border-color: var(--accent); color: var(--accent); }
+  .profile-row :global(.profile-icon) { width: 1.8rem; height: 1.8rem; flex-basis: 1.8rem; }
+  .index-strip { background: var(--night); color: #d8d3d8; border-block: 3px solid #305e69; padding-block: clamp(1.5rem, 3vw, 2.2rem); }
+  .focus-grid { display: grid; grid-template-columns: minmax(12rem, 0.6fr) minmax(0, 1.5fr); gap: 2rem; align-items: start; }
+  .focus-heading h2 { margin-top: 0.35rem; color: #fffaf5; font-size: var(--step-2); }
+  .focus-heading .eyebrow { color: #9dcbd4; }
+  .focus-list { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0; border-top: 1px solid rgba(255,255,255,0.15); }
+  .focus-list li { display: grid; grid-template-columns: 2rem minmax(0,1fr); gap: 0.7rem; align-items: baseline; padding: 0.72rem 0; border-bottom: 1px solid rgba(255,255,255,0.15); }
+  .focus-list li:nth-child(odd) { padding-right: 1rem; }
+  .focus-list li:nth-child(even) { padding-left: 1rem; border-left: 1px solid rgba(255,255,255,0.15); }
+  .focus-list span { color: #82b4bf; font-size: 0.68rem; }
+  .focus-list a { color: #d8d3d8; font-size: 0.86rem; text-decoration: none; }
+  .focus-list a:hover { color: #fff; }
+  .profile-grid { display: grid; grid-template-columns: minmax(0,1.15fr) minmax(18rem,0.7fr); gap: clamp(2rem,6vw,5.5rem); }
+  .profile-copy h2 { margin-top: 0.6rem; max-width: 19ch; }
+  .profile-copy .prose { margin-top: 1.5rem; }
+  .profile-facts { border-top: 1px solid var(--ink); }
+  .profile-facts div { display: grid; grid-template-columns: 7rem 1fr; gap: 1rem; padding-block: 1rem; border-bottom: 1px solid var(--rule); }
+  .profile-facts dt { color: var(--signal); font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.06em; text-transform: uppercase; }
+  .profile-facts dd { font-size: 0.9rem; color: var(--ink-soft); }
+  .section-action { margin-top: 2rem; }
+  .path-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: clamp(2rem,5vw,4rem); }
+  .path-label { margin-bottom: 0.7rem; color: var(--accent); font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  .path-grid .timeline-item { grid-template-columns: 6.5rem minmax(0,1fr); }
+  .dissertation { max-width: 52ch; }
+  .contact-band { padding-block: clamp(3rem,6vw,5rem); background: var(--signal-soft); border-top: 1px solid var(--rule); }
+  .contact-band-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(18rem,0.8fr); gap: clamp(2rem,6vw,5rem); align-items: center; }
+  .contact-band h2 { max-width: 19ch; margin-top: 0.5rem; }
+  .contact-band-grid > div:last-child > p { color: var(--ink-soft); margin-bottom: 1.3rem; }
+  @media (max-width: 52rem) {
+    .hero-grid, .profile-grid, .contact-band-grid { grid-template-columns: 1fr; }
+    .hero-aside { justify-self: start; width: min(100%, 24rem); }
+    .path-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 40rem) {
+    .focus-grid { grid-template-columns: 1fr; }
+    .focus-list { grid-template-columns: 1fr; }
+    .focus-list li:nth-child(odd), .focus-list li:nth-child(even) { padding-inline: 0; border-left: 0; }
+  }
+  @media (max-width: 25rem) { .profile-row { grid-template-columns: repeat(2,1fr); } }
+</style>

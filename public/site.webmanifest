@@ -1,0 +1,12 @@
+{
+  "name": "Ruting Wang — Academic Website",
+  "short_name": "Ruting Wang",
+  "description": "Research in financial risk, digital assets, climate finance and machine learning.",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#f6f2eb",
+  "theme_color": "#f6f2eb",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

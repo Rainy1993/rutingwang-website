@@ -1,0 +1,304 @@
+% =====================================================================
+%  Ruting Wang - Full Academic Curriculum Vitae
+%  Compile with XeLaTeX from the project root:
+%     npm run cv:build
+%
+%  Structure adapted from the public Robert J. R. Elliott CV template.
+%  The palette follows Ruting Wang's website (plum + mineral blue).
+%  Public edition: no photo, signature, birth date, private address,
+%  personal telephone number, private email, or referee contact details.
+% =====================================================================
+\documentclass[11pt]{article}
+\NeedsTeXFormat{LaTeX2e}
+\setcounter{secnumdepth}{0}
+
+\usepackage[a4paper,top=1.5cm,bottom=1.75cm,left=1.9cm,right=1.9cm,footskip=0.9cm]{geometry}
+\usepackage{fontspec}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{needspace}
+\usepackage{fancyhdr}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+% ---- Palette: print-friendly version of the website colours ---------
+\definecolor{ink}{HTML}{211F24}
+\definecolor{inksoft}{HTML}{4D4951}
+\definecolor{muted}{HTML}{6D6870}
+\definecolor{plum}{HTML}{653D64}
+\definecolor{plumdeep}{HTML}{472B49}
+\definecolor{signal}{HTML}{2E6878}
+\definecolor{hairline}{HTML}{DCD5CB}
+
+% ---- Fonts: same restrained editorial character as the reference ----
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont{Charter}
+\newfontfamily\sff{Avenir Next}
+\newfontfamily\mono{Menlo}
+\newfontfamily\namecjk{Songti SC}
+\color{ink}
+
+\hypersetup{
+  colorlinks=true,
+  urlcolor=signal,
+  linkcolor=plumdeep,
+  citecolor=plumdeep,
+  pdftitle={Ruting Wang - Full Curriculum Vitae},
+  pdfauthor={Ruting Wang},
+  pdfsubject={Academic curriculum vitae},
+  pdfkeywords={finance, financial risk, digital assets, climate finance, machine learning},
+  pdfcreator={XeLaTeX}
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\linespread{1.05}
+\emergencystretch=2.6em
+\hyphenpenalty=1500
+\frenchspacing
+
+% ---- Helpers ---------------------------------------------------------
+\newcommand{\dotsep}{\;\textcolor{hairline}{\textbullet}\;}
+\newcommand{\kicker}[1]{{\sff\fontsize{8.5}{10}\selectfont\color{plum}%
+  \addfontfeature{LetterSpace=12.0}\MakeUppercase{#1}}}
+\newcommand{\RW}{\textbf{Wang, R.}}
+\newcommand{\corr}{\raisebox{0.55ex}{\sff\fontsize{6.5}{6.5}\selectfont*}}
+
+\titleformat{\section}
+  {\sff\bfseries\fontsize{10.5}{12}\selectfont\color{ink}\addfontfeature{LetterSpace=8.0}}
+  {}{0pt}{\MakeUppercase}
+  [{\vspace{2.5pt}{\color{plum}\titlerule[1.3pt]}\vspace{-1pt}{\color{hairline}\titlerule[0.5pt]}}]
+\titlespacing*{\section}{0pt}{13pt plus 3pt minus 2pt}{6pt}
+
+\newcommand{\subhead}[1]{%
+  \par\addvspace{8pt}\needspace{3\baselineskip}%
+  {\sff\bfseries\fontsize{9}{11}\selectfont\color{plumdeep}%
+    \addfontfeature{LetterSpace=3.0}\MakeUppercase{#1}}%
+  \par\vspace{3pt}}
+
+\newcommand{\pubitem}[1]{%
+  \par\begingroup\sloppy\noindent\fontsize{9.2}{12.3}\selectfont%
+  \hangindent=1.1em\hangafter=1 #1\par\endgroup\addvspace{3.4pt}}
+
+\newcommand{\cvrow}[2]{%
+  \par\noindent\needspace{2\baselineskip}%
+  \begin{minipage}[t]{0.17\linewidth}\raggedright\sff\footnotesize\color{plum}#1\end{minipage}%
+  \hfill\begin{minipage}[t]{0.81\linewidth}#2\end{minipage}%
+  \par\addvspace{5.5pt}}
+
+\newcommand{\theme}[2]{%
+  \par\noindent\hangindent=1.25em\hangafter=0%
+  \raisebox{0.14em}{\textcolor{signal}{\rule{0.45em}{0.45em}}}\hspace{0.6em}%
+  \textbf{#1.}\hspace{0.35em}{\color{inksoft}#2}\par\addvspace{4pt}}
+
+\newcommand{\lead}[1]{{\fontsize{10.6}{14.4}\selectfont\color{inksoft}#1\par}}
+
+% ---- Header ----------------------------------------------------------
+\newcommand{\cvheader}{%
+  \noindent
+  \kicker{Curriculum Vit\ae\ \textbullet\ Full Record}\\[7pt]
+  {\fontsize{27}{29}\selectfont\color{ink}Ruting Wang\hspace{0.45em}%
+    {\namecjk\fontsize{18}{22}\selectfont\color{plum}王茹婷}}\\[6pt]
+  {\sff\fontsize{8.5}{10}\selectfont\color{muted}\addfontfeature{LetterSpace=3.0}%
+    BSc \textbullet\ MSc \textbullet\ PhD in Finance}\\[9pt]
+  {\fontsize{13}{15}\selectfont\itshape\color{plumdeep}Postdoctoral Researcher in Finance}\\[4pt]
+  {\small\color{inksoft}School of Energy and Environment, City University of Hong Kong}\\[1pt]
+  {\footnotesize\color{muted}Business School, Sun Yat-sen University}%
+  \par\vspace{11pt}
+  {\color{plum}\hrule height 1.4pt}\vspace{1.6pt}{\color{hairline}\hrule height 0.5pt}%
+  \par\vspace{7pt}
+  {\sff\fontsize{8.1}{11.5}\selectfont\color{inksoft}%
+    \href{mailto:rutiwang@cityu.edu.hk}{rutiwang@cityu.edu.hk}\dotsep
+    \href{mailto:wangrt6@mail.sysu.edu.cn}{wangrt6@mail.sysu.edu.cn}\dotsep
+    \href{https://orcid.org/0000-0001-8871-3838}{ORCID}\dotsep
+    \href{https://scholar.google.com/citations?user=tB0js94AAAAJ&hl=en}{Google Scholar}\par}%
+  \vspace{2pt}}
+
+% ---- Footer ----------------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\renewcommand{\footrule}{\vskip-7pt{\color{hairline}\hrule height 0.4pt}\vskip5pt}
+\fancyfoot[L]{\sff\fontsize{7.6}{9}\selectfont\color{muted}%
+  Ruting Wang \textbullet\ Full Curriculum Vit\ae\ \textbullet\ 20 July 2026}
+\fancyfoot[R]{\sff\fontsize{7.6}{9}\selectfont\color{muted}\thepage}
+
+% =====================================================================
+\begin{document}
+\thispagestyle{fancy}
+\cvheader
+
+\section{Profile}
+\lead{I am a finance researcher working at the intersection of financial risk,
+digital assets, corporate finance and climate finance. My research uses machine
+learning and modern causal-inference methods to study how risks travel through
+markets and institutions, and how financial systems allocate capital.}
+
+\section{Academic Appointments}
+\cvrow{2024.12--present}{\textbf{Postdoctoral Researcher}, School of Energy and Environment,
+City University of Hong Kong. Hong Kong Scholars Program.}
+\cvrow{2023.12--present}{\textbf{Research Fellow}, IDA Institute for Digital Assets,
+Bucharest University of Economic Studies.}
+\cvrow{2023.02--present}{\textbf{Postdoctoral Researcher}, Business School,
+Sun Yat-sen University.}
+
+\section{Education}
+\cvrow{2018.09--2022.12}{\textbf{PhD in Finance}, School of Business, Sun Yat-sen University.
+Dissertation: \textit{Rigid Payment, Debt Financing, and Capital Misallocation: An Application
+of Machine Learning Causal Inference Method}.}
+\cvrow{2021.01--2022.01}{\textbf{Visiting PhD}, IRTG 1792,
+Humboldt-Universit\"at zu Berlin.}
+\cvrow{2014.09--2017.06}{\textbf{MSc in Financial Management},
+Zhongnan University of Economics and Law.}
+\cvrow{2010.09--2014.06}{\textbf{BSc in Financial Management},
+Zhongnan University of Economics and Law.}
+
+\section{Research Interests}
+\theme{Systemic risk and financial networks}{Tail-event dependence, network dynamics,
+financial risk measurement and asset pricing.}
+\theme{Digital assets and fintech}{Cryptocurrency risk, Ethereum development milestones,
+protocol innovation and market response.}
+\theme{Climate and carbon finance}{Carbon risk, stranded assets, ESG, climate policy and
+the transmission of environmental risk through financial markets.}
+\theme{Corporate finance and capital allocation}{Bank competition, corporate and government
+debt, implicit guarantees and institutional reform.}
+\theme{Machine learning for causal inference}{Quantile methods, regularisation,
+double machine learning, forecasting and policy evaluation.}
+
+\needspace{8\baselineskip}
+\section{Publications}
+{\footnotesize\color{muted}Ruting Wang is shown in bold. \corr\ denotes corresponding author.
+DOIs link to the version of record. Working-paper destinations and statuses are reported as
+stated in the CV dated 20 July 2026.}
+\par\vspace{5pt}
+
+\subhead{Peer-reviewed journal articles}
+\pubitem{Chen, R., Liu, S.\corr, Nie, Z. \& \RW\ (2026). Bank deregulation and the rise of
+local government debt: Evidence from joint-equity bank entry in China.
+\textit{Economic Modelling}, 154, 107367.
+\href{https://doi.org/10.1016/j.econmod.2025.107367}{doi:10.1016/j.econmod.2025.107367}.
+All authors contributed equally and are treated as joint first authors.}
+
+\pubitem{\RW, Pot\`\i, V.\corr\ \& H\"ardle, W.\,K. (2024). Assessing network risk with FRM:
+Links with pricing kernel volatility and application to cryptocurrencies.
+\textit{Quantitative Finance}, 24(7), 975--992.
+\href{https://doi.org/10.1080/14697688.2024.2370311}{doi:10.1080/14697688.2024.2370311}.}
+
+\pubitem{\RW\corr, Althof, M. \& H\"ardle, W.\,K. (2023). A financial risk meter for China.
+\textit{Emerging Markets Review}, 56, 101052.
+\href{https://doi.org/10.1016/j.ememar.2023.101052}{doi:10.1016/j.ememar.2023.101052}.}
+
+\pubitem{Peng, F., \RW\corr\ \& Liao, J. (2023). Bank competition, corporate debt, and
+bringing firms back to the real economy based on double machine learning.
+\textit{Economic Theory and Business Management}, 43(3), 82--97. [In Chinese].}
+
+\pubitem{Zhan, K., \RW\corr, Nie, Z. \& Liao, J. (2023). Value-added tax and corporate debt
+structure: Evidence from China's 2017 value-added tax filing.
+\textit{Quarterly Journal of Finance}, 7(1), 77--100. [In Chinese].}
+
+\pubitem{\RW, Peng, F., Li, W. \& Wang, C. (2022). Does terminating rigid payment diminish
+financing cost of companies? \textit{Management World}, 38(4), 42--64. [In Chinese].}
+
+\pubitem{\RW, Li, W. \& Huang, Y. (2019). Trade frictions, intraday jumps, and stock market
+volatility: Empirical evidence based on high-frequency data in China.
+\textit{Studies of International Finance}, 392(12), 63--73. [In Chinese].}
+
+\subhead{Book and conference paper}
+\pubitem{Huang, C., Bag, R., Pele, P., Petukhina, A., \RW\ \& Zuo, X. (2026).
+\textit{Applied Time Series Analysis and Forecasting with Python: Problems and Solutions}.
+Springer Nature. Forthcoming.}
+
+\pubitem{\RW, Ning, K. \& Li, G.\corr\ (2024). Competition in issuance underwriting and bond
+market efficiency. FMA European Conference.}
+
+\subhead{Working papers and work in progress}
+\pubitem{Li, S., Liu, X.\corr, Song, Z. \& \RW\ (2026). Forced to resist? Firms' AI exposure
+and the rise of labor disputes. Revise and resubmit, \textit{Humanities and Social Sciences Communications}.}
+
+\pubitem{Zhou, L., \RW\corr, H\"ardle, W.\,K., Zuo, X. \& Schach, L. (2026). Pricing kernel
+(non)monotonicity and conditional information. Under review, \textit{International Review of Financial Analysis}.}
+
+\pubitem{Lin, M., G\u{a}man, S., \RW\corr\ \& Pele, D.\,T. (2026). Do investors buy innovation?
+Market responses to Ethereum development milestones. Under review,
+\textit{Journal of International Financial Markets, Institutions \& Money}.}
+
+\pubitem{\RW, Li, Q. \& Zhang, L.\corr\ (2026). Anti-corruption reform, resource reallocation,
+and transitional cost: Evidence from China's healthcare sector. Under review,
+\textit{Journal of Law and Economics}.}
+
+\pubitem{Li, Q., \RW\ \& Zhang, L.\corr\ (2026). Transmitted institutional threat: Socially salient
+ties and strategic retrenchment in China's medical sector. Under review,
+\textit{Journal of Business Research}.}
+
+\pubitem{\RW, H\"ardle, W.\,K. \& Zhang, L.\corr\ (2025). Measuring carbon risk dynamics.
+Under review, \textit{Journal of Banking \& Finance}.
+\href{https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6916243}{SSRN working paper}.}
+
+\pubitem{Xu, Y., \RW, Hao, X., Zhang, L.\corr\ \& Ho, A.\,T. (2025). Global climate policy
+trajectories reveal persistent implementation and governance asymmetries. Under review,
+\textit{One Earth}.}
+
+\pubitem{Woitschig, P., \RW\corr\ \& H\"ardle, W.\,K. (2026). Measuring the power consumption
+after ``the Merge''. Under review, \textit{Applied Energy}.}
+
+\pubitem{\RW, Zhang, L.\corr, Wang, Z. \& Zhou, W. (2026). Market-implied stranded-asset risk
+propagates through the financial market. Work in progress.}
+
+\pubitem{Chen, F., Chen, Y., Lin, A., \RW, Chopra, S.\,S. \& Zhang, L.\corr\ (2025).
+Evaluating the effectiveness of the structural data disclosure model developed by HKQAA
+and its potential applications. Working paper.}
+
+\needspace{8\baselineskip}
+\section{Research Grants}
+{\footnotesize\color{muted}Principal investigator for all projects listed below.}
+\par\vspace{4pt}
+\cvrow{2024.01--2026.12}{\textbf{National Natural Science Foundation of China} (72302237).
+``How Does Rigid Payment Expectation Influence the Allocation of Financial Resources through
+the Bond Market's Price Efficiency Channel?''}
+\cvrow{2023.11--2025.11}{\textbf{China Postdoctoral Science Foundation} (2023M743984).
+``Analysis of the Impact and Mechanism of Bond Market Default Risk on Financial Resource
+Allocation Efficiency from the Perspective of Guarantee Network.''}
+\cvrow{2024.01--2026.12}{\textbf{Guangdong Provincial Natural Science Foundation}
+(2024A1515010314). ``The Impact of Implicit Guarantee Expectations on the Allocation of
+Financial Resources and Its Mechanism: A Study from the Dual Perspectives of Bond Market
+Pricing Efficiency and Financial Risk.''}
+
+\section{Teaching}
+\cvrow{2025.08}{\textbf{Machine Learning in Financial Risk}, summer course for
+``Data without Borders: Building AI Competence across Borders'', Romania.}
+\cvrow{2021.02--2021.09}{\textbf{DEDA - Digital Economy \& Decision Analytics},
+Humboldt-Universit\"at zu Berlin.}
+\cvrow{2019.09--2019.12}{\textbf{Probability Theory}, Sun Yat-sen University.}
+\cvrow{2019.09--2019.12}{\textbf{Financial Markets and Financial Institutions},
+Sun Yat-sen University.}
+
+\subhead{Quantinar courses and courselets}
+\pubitem{\href{https://quantinar.com/course/934/machine-learning-in-financial-risk}{Machine Learning in Financial Risk};
+\href{https://www.quantinar.com/course/43/FRM}{FRM@China};
+\href{https://quantinar.com/course/923/measuring-carbon-risk-dynamics?q=cardi}{Measuring Carbon Risk Dynamics};
+\href{https://quantinar.com/course/857/market-responses-to-eth-development-milestones}{Market Responses to ETH Development Milestones};
+and \href{https://www.quantinar.com/course/42/methodology}{Kalman Filter}.}
+\pubitem{Additional courselet topics reported in the CV: applied time-series solutions,
+pricing-kernel puzzle, quantile regression, Financial Risk Meter for China and crypto markets,
+and the expectation-maximisation algorithm.}
+
+\section{Editorial and Professional Service}
+\cvrow{Editorial}{\textbf{Associate Editor}, \textit{Digital Finance}, Springer Nature.}
+\cvrow{Editorial}{\textbf{Associate Editor and Special Issue Editor},
+\textit{Management \& Marketing}, Springer Nature. Special issue: ``Generative AI in Finance''.}
+\cvrow{Refereeing}{\textit{The Energy Journal}; \textit{Journal of Digital Finance};
+\textit{Quantitative Finance}; \textit{Singapore Economic Review};
+\textit{Asia-Pacific Journal of Accounting \& Economics};
+\textit{Emerging Markets Finance and Trade}; and
+\textit{International Review of Financial Analysis}.}
+
+\section{Affiliations and Skills}
+\cvrow{2025.08--present}{Member, \href{https://www.digital-finance-msca.com/people/ruting-wang}{MSCA Digital Finance}.}
+\cvrow{Software}{R, Stata, MATLAB, Python and \LaTeX.}
+
+\section{References}
+{\color{inksoft}Available upon request.}
+
+\end{document}

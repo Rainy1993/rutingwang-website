@@ -1,0 +1,621 @@
+% !TeX program = xelatex
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[a4paper,top=17mm,bottom=18mm,left=17mm,right=17mm,headheight=26pt,footskip=11mm]{geometry}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage[table]{xcolor}
+\usepackage{microtype}
+\usepackage{ragged2e}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage[most]{tcolorbox}
+\usepackage{xurl}
+\usepackage{hyperref}
+\usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{amssymb}
+\usepackage{needspace}
+
+\defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\setmainfont{Avenir Next}
+\setsansfont{Avenir Next}
+\setmonofont{DejaVu Sans Mono}
+\setCJKmainfont{Hiragino Sans GB}
+\setCJKsansfont{Hiragino Sans GB}
+\setCJKmonofont{Hiragino Sans GB}
+\newfontfamily\displayfont{Avenir Next}
+
+\definecolor{DeepNavy}{HTML}{183247}
+\definecolor{NavyTwo}{HTML}{23485D}
+\definecolor{MutedTeal}{HTML}{3D746F}
+\definecolor{Forest}{HTML}{496C5B}
+\definecolor{SoftGold}{HTML}{C6A35B}
+\definecolor{WarmWhite}{HTML}{F7F4ED}
+\definecolor{Paper}{HTML}{FCFBF8}
+\definecolor{Mist}{HTML}{EAF0EF}
+\definecolor{PaleBlue}{HTML}{E9F0F4}
+\definecolor{PaleGold}{HTML}{F3EBD8}
+\definecolor{Ink}{HTML}{23313A}
+\definecolor{MutedInk}{HTML}{5D6A71}
+\definecolor{RuleGrey}{HTML}{D5DCDD}
+\definecolor{Alert}{HTML}{8A3E48}
+\definecolor{AlertTint}{HTML}{F7ECEE}
+
+\pagecolor{Paper}
+\color{Ink}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.48em}
+\setlength{\emergencystretch}{2em}
+\raggedbottom
+\setcounter{secnumdepth}{0}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=DeepNavy,
+  urlcolor=MutedTeal,
+  pdfauthor={JS Insights},
+  pdftitle={Dr Ruting Wang Academic Website - Handover and Update Guide},
+  pdfsubject={GitHub, Cloudflare Pages and website content maintenance},
+  pdfkeywords={Ruting Wang, academic website, GitHub, Cloudflare Pages, JS Insights}
+}
+\urlstyle{same}
+
+\graphicspath{{./assets/}}
+\newcommand{\jslogo}[1][height=5mm]{%
+  \IfFileExists{docs/assets/js-insights-logo-wide-pdf.png}{\includegraphics[#1]{docs/assets/js-insights-logo-wide-pdf.png}}{%
+    \IfFileExists{assets/js-insights-logo-wide-pdf.png}{\includegraphics[#1]{assets/js-insights-logo-wide-pdf.png}}{\textbf{JS INSIGHTS}}}%
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\jslogo[height=4mm]}
+\fancyhead[R]{\sffamily\scriptsize\color{MutedInk}Dr Ruting Wang - Website Handover}
+\fancyfoot[L]{\sffamily\scriptsize\color{MutedInk}\href{https://jsinsights.co.uk/services/academic-websites/}{jsinsights.co.uk/services/academic-websites}}
+\fancyfoot[R]{\sffamily\scriptsize\color{MutedInk}\thepage\ / \pageref*{LastPage}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\renewcommand{\headrule}{\vspace{2pt}{\color{RuleGrey}\rule{\headwidth}{0.4pt}}}
+\renewcommand{\footrule}{{\color{RuleGrey}\rule{\headwidth}{0.4pt}}\vspace{2pt}}
+
+\titleformat{\section}{\displayfont\bfseries\color{DeepNavy}\LARGE}{}{0pt}{}[\vspace{0.3em}{\color{SoftGold}\rule{16mm}{1.4pt}\color{RuleGrey}\rule{\dimexpr\linewidth-16mm\relax}{1.4pt}}]
+\titlespacing*{\section}{0pt}{0.9em}{0.65em}
+\titleformat{\subsection}{\sffamily\bfseries\color{DeepNavy}\large}{}{0pt}{}
+\titlespacing*{\subsection}{0pt}{0.8em}{0.25em}
+\titleformat{\subsubsection}{\sffamily\bfseries\color{NavyTwo}\normalsize}{}{0pt}{}
+\titlespacing*{\subsubsection}{0pt}{0.55em}{0.15em}
+
+\setlist[enumerate]{leftmargin=1.75em,itemsep=0.34em,topsep=0.25em,label=\textcolor{MutedTeal}{\sffamily\bfseries\arabic*.}}
+\setlist[itemize]{leftmargin=1.45em,itemsep=0.27em,topsep=0.25em,label=\textcolor{MutedTeal}{\small\textbullet}}
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
+\newcolumntype{C}{>{\Centering\arraybackslash}X}
+\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}p{#1}}
+\renewcommand{\arraystretch}{1.34}
+
+\tcbset{
+  base/.style={enhanced jigsaw,colback=white,colframe=RuleGrey,boxrule=0.55pt,arc=1.4mm,left=4mm,right=4mm,top=3.2mm,bottom=3.2mm,before skip=2.5mm,after skip=2.5mm},
+  quiet/.style={base,colback=WarmWhite},
+  teal/.style={base,colback=Mist,colframe=MutedTeal},
+  gold/.style={base,colback=PaleGold,colframe=SoftGold},
+  alert/.style={base,colback=AlertTint,colframe=Alert},
+  navy/.style={base,colback=DeepNavy,colframe=DeepNavy,coltext=white}
+}
+
+\lstdefinestyle{code}{
+  basicstyle=\ttfamily\scriptsize,
+  backgroundcolor=\color{PaleBlue},
+  frame=single,
+  rulecolor=\color{RuleGrey},
+  framesep=3mm,
+  xleftmargin=0pt,
+  xrightmargin=0pt,
+  breaklines=true,
+  breakatwhitespace=false,
+  showstringspaces=false,
+  columns=fullflexible,
+  keepspaces=true,
+  aboveskip=2.5mm,
+  belowskip=2.5mm
+}
+\lstset{style=code}
+
+\newcommand{\eyebrow}[1]{{\sffamily\bfseries\scriptsize\color{MutedTeal}\MakeUppercase{#1}\par}\vspace{0.18em}}
+\newcommand{\lead}[1]{{\large\color{NavyTwo}\RaggedRight #1\par}}
+\newcommand{\button}[1]{\tcbox[on line,colback=DeepNavy,colframe=DeepNavy,coltext=white,boxrule=0pt,arc=1.2mm,left=2mm,right=2mm,top=0.7mm,bottom=0.7mm]{\sffamily\bfseries\scriptsize #1}}
+\newcommand{\pathlabel}[1]{\tcbox[on line,colback=PaleBlue,colframe=RuleGrey,boxrule=0.4pt,arc=1mm,left=1.6mm,right=1.6mm,top=0.5mm,bottom=0.5mm]{\ttfamily\scriptsize #1}}
+\newcommand{\checkline}[1]{\(\square\)\hspace{0.5em}#1}
+
+\begin{document}
+
+\thispagestyle{empty}
+\begin{tcolorbox}[navy,left=11mm,right=11mm,top=11mm,bottom=11mm]
+  \jslogo[height=8mm]
+  \vspace{16mm}
+
+  {\sffamily\bfseries\footnotesize\color{SoftGold}ACADEMIC WEBSITES - CLIENT HANDOVER}\par
+  \vspace{4mm}
+  {\displayfont\bfseries\fontsize{29}{33}\selectfont Dr Ruting Wang\par}
+  \vspace{2mm}
+  {\displayfont\bfseries\fontsize{24}{28}\selectfont Academic website guide\par}
+  \vspace{5mm}
+  {\large GitHub, Cloudflare Pages, Talks and everyday updates - explained click by click.\par}
+  \vspace{17mm}
+
+  \begin{tcolorbox}[enhanced,colback=white!8,colframe=white!18,coltext=white,boxrule=0.5pt,arc=1.2mm,left=4mm,right=4mm,top=3mm,bottom=3mm]
+    \textbf{Website preview}\par
+    \href{https://rutingwang-website.pages.dev/}{rutingwang-website.pages.dev}\par\vspace{1mm}
+    \textbf{Current private GitHub repository}\par
+    \href{https://github.com/Jiajing-Sun/rutingwang-website}{github.com/Jiajing-Sun/rutingwang-website}
+  \end{tcolorbox}
+  \vfill
+  {\small Prepared by JS Insights\hfill Version 1.0 - 21 July 2026}
+\end{tcolorbox}
+
+\vfill
+\begin{center}
+{\small\color{MutedInk}Keep this PDF with the website ZIP package. Do not store account passwords in it.}
+\end{center}
+\clearpage
+
+\section{Start here - the whole system in one minute}
+
+\lead{You do not need to learn programming. You only need to know where the content lives, which button saves it, and where to check the result.}
+
+\begin{tcolorbox}[teal]
+\begin{center}
+\begin{tabularx}{\linewidth}{C c C c C}
+\textbf{1. GitHub} & \Large$\longrightarrow$ & \textbf{2. Cloudflare} & \Large$\longrightarrow$ & \textbf{3. Live website}\\
+Website filing cabinet && Automatic publisher && What visitors see\\
+\end{tabularx}
+\end{center}
+\end{tcolorbox}
+
+\subsection{The normal update routine}
+
+\begin{tcolorbox}[gold]
+Edit one file on GitHub \(\rightarrow\) click \button{Commit changes} \(\rightarrow\) wait for Cloudflare \(\rightarrow\) refresh the website.
+\end{tcolorbox}
+
+\subsection{Before starting}
+
+\checkline{Ruting has her own GitHub account.}\par
+\checkline{Ruting has her own Cloudflare account.}\par
+\checkline{The JS Insights ZIP package is saved in a safe place.}\par
+\checkline{The accounts use an email Ruting expects to keep long term.}
+
+\subsection{Five rules that prevent most problems}
+
+\begin{enumerate}
+  \item Change only one small thing at a time.
+  \item After saving, wait about 1-3 minutes and check the live page.
+  \item Edit only the files named in this guide.
+  \item Never put passwords, verification codes, API keys or private personal information in GitHub.
+  \item If Cloudflare turns red, stop editing and send one clear screenshot to JS Insights.
+\end{enumerate}
+
+\begin{tcolorbox}[quiet]
+\textbf{The easiest long-term arrangement}\par
+GitHub, Cloudflare and the personal domain should belong to Ruting. JS Insights can remain a collaborator, so support does not require sharing passwords.
+\end{tcolorbox}
+
+\clearpage
+\section{Move the website to Ruting's GitHub}
+
+\lead{Choose one method. Method A is shorter and keeps the complete history. Method B creates a separate copy from the ZIP backup.}
+
+\subsection{Method A - transfer the existing repository (recommended)}
+
+\subsubsection{Ruting does this first}
+\begin{enumerate}
+  \item Sign in at \href{https://github.com/}{github.com}.
+  \item Open the top-right account menu and copy the exact GitHub username.
+  \item Send the username to Jiajing.
+  \item When GitHub emails a transfer request, open it and accept within 24 hours.
+\end{enumerate}
+
+\subsubsection{Jiajing completes the transfer}
+\begin{enumerate}
+  \item Open \href{https://github.com/Jiajing-Sun/rutingwang-website}{the current private repository}.
+  \item Click \button{Settings}.
+  \item Stay on \textbf{General} and scroll to the bottom.
+  \item In the red \textbf{Danger Zone}, find \textbf{Transfer repository}.
+  \item Enter Ruting's exact GitHub username.
+  \item Type \pathlabel{rutingwang-website} when GitHub asks for the repository name.
+  \item Confirm. Ruting then accepts the email.
+\end{enumerate}
+
+\begin{tcolorbox}[teal]
+The original owner is normally added as a collaborator after a transfer. The supplied ZIP remains an independent backup.
+\end{tcolorbox}
+
+\subsection{Method B - create a new private repository from the ZIP}
+
+\begin{enumerate}
+  \item Download GitHub Desktop from \href{https://desktop.github.com/}{desktop.github.com} and sign in as Ruting.
+  \item Unzip \pathlabel{ruting-wang-website-js-insights-handover-2026-07-21.zip}.
+  \item In GitHub Desktop, choose \textbf{File > Add Local Repository...}.
+  \item Click \textbf{Choose...} and select the unzipped folder.
+  \item If it says this is not a repository, click \textbf{create a repository}.
+  \item Use the name \pathlabel{rutingwang-website} and branch \pathlabel{main}.
+  \item In \textbf{Summary}, type \pathlabel{Initial website handover}.
+  \item Click \button{Commit to main}.
+  \item Click \button{Publish repository} and keep \textbf{Keep this code private} selected.
+\end{enumerate}
+
+\begin{tcolorbox}[alert]
+\textbf{Do not upload only the ZIP file to GitHub.}\par
+Cloudflare needs the unzipped folders and files. The finished GitHub address should look like \path{https://github.com/RUTING-USERNAME/rutingwang-website}.
+\end{tcolorbox}
+
+\clearpage
+\section{Publish with Cloudflare Pages}
+
+\lead{Cloudflare connects to the GitHub repository once. After that, every saved change on the main branch is deployed automatically.}
+
+\begin{enumerate}
+  \item Sign in at \href{https://dash.cloudflare.com/}{dash.cloudflare.com}.
+  \item Open \textbf{Workers \& Pages}.
+  \item Click \button{Create application}.
+  \item Select the \textbf{Pages} tab.
+  \item Click \button{Import an existing Git repository}.
+  \item Choose \textbf{GitHub} and authorise Cloudflare.
+  \item Select only \pathlabel{rutingwang-website} when GitHub asks for repository access.
+  \item Select that repository in Cloudflare and click \button{Begin setup}.
+\end{enumerate}
+
+\subsection{Enter these values exactly}
+
+\begin{tcolorbox}[quiet]
+\begin{tabularx}{\linewidth}{L{47mm}Y}
+\toprule
+\textbf{Cloudflare box} & \textbf{Value}\\
+\midrule
+Project name & \texttt{ruting-wang-academic}, or another available name\\
+Production branch & \texttt{main}\\
+Framework preset & \texttt{Astro}\\
+Build command & \texttt{npm run build}\\
+Build directory & \texttt{dist}\\
+\bottomrule
+\end{tabularx}
+\end{tcolorbox}
+
+If an \textbf{Environment variables} area is visible, add:
+
+\begin{tcolorbox}[quiet]
+\begin{tabularx}{\linewidth}{L{47mm}Y}
+\toprule
+\textbf{Variable} & \textbf{Value}\\
+\midrule
+\texttt{NODE\_VERSION} & \texttt{20}\\
+\texttt{BASE\_PATH} & \texttt{/}\\
+\texttt{SITE\_URL} & Final Cloudflare address, for example \texttt{https://ruting-wang-academic.pages.dev}\\
+\bottomrule
+\end{tabularx}
+\end{tcolorbox}
+
+\begin{enumerate}[start=9]
+  \item Click \button{Save and Deploy}.
+  \item Wait until the deployment shows green \textbf{Success}.
+  \item Click \textbf{Visit site} and open every page once.
+\end{enumerate}
+
+\begin{tcolorbox}[gold]
+\textbf{If the first deployment is red}\par
+Check only these three settings first: branch \texttt{main}, command \texttt{npm run build}, directory \texttt{dist}. If they are correct, take a screenshot instead of changing random options.
+\end{tcolorbox}
+
+\clearpage
+\section{Connect a personal domain later}
+
+The free \texttt{pages.dev} address can be used until Ruting chooses a personal domain.
+
+\begin{enumerate}
+  \item Open Cloudflare > \textbf{Workers \& Pages}.
+  \item Open the Ruting website project.
+  \item Click \textbf{Custom domains}.
+  \item Click \button{Set up a domain}.
+  \item Enter the domain, for example \texttt{rutingwang.com}.
+  \item Follow the DNS instructions shown by Cloudflare.
+  \item Wait until the domain status becomes active.
+  \item Change the Cloudflare variable \texttt{SITE\_URL} to the final address.
+  \item Redeploy the latest version.
+\end{enumerate}
+
+\begin{tcolorbox}[teal]
+For a root domain such as \texttt{rutingwang.com}, Cloudflare may ask to use Cloudflare nameservers. For a subdomain such as \texttt{www.rutingwang.com}, it may ask for a CNAME record. Follow the exact instruction displayed for that domain.
+\end{tcolorbox}
+
+\subsection{Everyday GitHub update routine}
+
+\begin{enumerate}
+  \item Open the repository in a browser.
+  \item Open the file named in this guide.
+  \item Click the \textbf{pencil icon}.
+  \item Change only the required text.
+  \item Click \button{Commit changes...}.
+  \item Type a short message, for example \pathlabel{Add October seminar}.
+  \item Choose \textbf{Commit directly to the main branch}.
+  \item Click the green \button{Commit changes} button.
+  \item Open Cloudflare > the project > \textbf{Deployments}.
+  \item Wait for green \textbf{Success}, then refresh the live page.
+\end{enumerate}
+
+\begin{tcolorbox}[quiet]
+If the old version is still visible, wait another minute and refresh once more. Do not commit the same edit repeatedly.
+\end{tcolorbox}
+
+\clearpage
+\section{Add a Talk - the main content update}
+
+\lead{Talks are controlled by one small file. No page layout needs to be edited.}
+
+Open this file in GitHub:
+
+\begin{center}
+\pathlabel{src/data/talks.json}
+\end{center}
+
+\subsection{Add the first Talk}
+
+\begin{enumerate}
+  \item Open \textbf{src}, then \textbf{data}, then \textbf{talks.json}.
+  \item Click the pencil icon.
+  \item Find this exact line:
+\end{enumerate}
+
+\begin{lstlisting}
+"items": [],
+\end{lstlisting}
+
+Replace only that line with:
+
+\begin{lstlisting}
+"items": [
+  {
+    "date": "2026-10-15",
+    "title": "The title of the talk",
+    "event": "Finance Seminar Series",
+    "venue": "University name, City",
+    "kind": "Invited seminar",
+    "href": ""
+  }
+],
+\end{lstlisting}
+
+\begin{enumerate}[start=4]
+  \item Replace the example words with verified information.
+  \item Leave \texttt{"href": ""} empty when there is no public link.
+  \item Click \button{Commit changes...} and write \pathlabel{Add first talk}.
+\end{enumerate}
+
+\begin{tcolorbox}[teal]
+After Cloudflare finishes, the Talk appears on the \textbf{Talks} page and at the bottom of the \textbf{Research} page.
+\end{tcolorbox}
+
+\subsection{Meaning of each field}
+
+\begin{tabularx}{\linewidth}{L{25mm}Y L{43mm}}
+\toprule
+\textbf{Field} & \textbf{What to enter} & \textbf{Example}\\
+\midrule
+\texttt{date} & Year-month-day & \texttt{2026-10-15}\\
+\texttt{title} & Exact presentation title & Measuring Carbon Risk Dynamics\\
+\texttt{event} & Seminar, conference or workshop & Finance Seminar Series\\
+\texttt{venue} & Institution and city, or Online & University of X, London\\
+\texttt{kind} & Type of appearance & Invited talk\\
+\texttt{href} & Public link, otherwise empty & \texttt{https://...} or \texttt{""}\\
+\bottomrule
+\end{tabularx}
+
+\clearpage
+\section{Talks - add, edit and remove safely}
+
+\subsection{Add a second Talk}
+
+Copy the whole first block from \texttt{\{} to \texttt{\}} and place the copy underneath. There must be one comma between the blocks:
+
+\begin{lstlisting}
+"items": [
+  {
+    "date": "2026-10-15",
+    "title": "First talk title",
+    "event": "First event",
+    "venue": "First venue",
+    "kind": "Invited seminar",
+    "href": ""
+  },
+  {
+    "date": "2026-09-03",
+    "title": "Second talk title",
+    "event": "Second event",
+    "venue": "Second venue",
+    "kind": "Conference presentation",
+    "href": "https://example.com/event"
+  }
+],
+\end{lstlisting}
+
+Keep the newest Talk at the top.
+
+\subsection{Edit or remove a Talk}
+
+\begin{itemize}
+  \item To correct a Talk, change only the words inside quotation marks.
+  \item To remove one Talk, delete its complete \texttt{\{ ... \}} block.
+  \item Keep one comma between two remaining Talk blocks.
+  \item If no Talks remain, restore \texttt{"items": [],}.
+\end{itemize}
+
+\begin{tcolorbox}[gold]
+\textbf{Four JSON rules}
+\begin{enumerate}
+  \item Use straight double quotation marks: \texttt{"text"}.
+  \item Keep the colon after every field name.
+  \item Put a comma between Talk blocks, but not after the final block.
+  \item Do not edit the \texttt{template} block at the bottom.
+\end{enumerate}
+\end{tcolorbox}
+
+\subsection{Simplest support request}
+
+If editing feels uncertain, send JS Insights only this:
+
+\begin{lstlisting}
+Date:
+Talk title:
+Event:
+Venue:
+Type of talk:
+Public link, if any:
+\end{lstlisting}
+
+\clearpage
+\section{Publications and other content}
+
+\subsection{Add a published journal article}
+
+Open \pathlabel{src/data/publications.ts}. Published work goes in \texttt{publications}; work under review goes in \texttt{workingPapers}.
+
+Copy a similar existing block and replace the values:
+
+\begin{lstlisting}
+{
+  year: 2027,
+  title: 'Exact article title',
+  authors: 'Wang, R., & Coauthor, A.',
+  venue: 'Journal Name',
+  detail: '12(3), 100-120',
+  doi: '10.1234/example.2027.001',
+  featured: false,
+  category: 'journal',
+},
+\end{lstlisting}
+
+\begin{itemize}
+  \item Enter only the DOI in \texttt{doi}; do not add \texttt{https://doi.org/}.
+  \item Use the exact author order and final journal details.
+  \item Use \texttt{featured: true} only when the article should be selected prominently.
+  \item Keep the comma after the final \texttt{\},}.
+\end{itemize}
+
+\begin{tcolorbox}[alert]
+Publication details are easy to misstate. If anything is uncertain, send JS Insights the DOI or official publisher link rather than guessing.
+\end{tcolorbox}
+
+\subsection{Where other content lives}
+
+\begin{tabularx}{\linewidth}{Y L{72mm}}
+\toprule
+\textbf{Content} & \textbf{File}\\
+\midrule
+Name, role, affiliations, email, profile links & \texttt{src/data/site.ts}\\
+Research areas and grants & \texttt{src/data/research.ts}\\
+Publications and working papers & \texttt{src/data/publications.ts}\\
+Talks & \texttt{src/data/talks.json}\\
+Teaching and Quantinar courses & \texttt{src/pages/teaching.astro}\\
+Editorial service and refereeing & \texttt{src/pages/service.astro}\\
+Portrait & \texttt{public/images/ruting-wang-portrait.webp}\\
+Short and full CV PDFs & \texttt{public/docs/}\\
+\bottomrule
+\end{tabularx}
+
+\clearpage
+\section{CV, portrait and files not to touch}
+
+\subsection{Replace the CV}
+
+The public PDF filenames must remain exactly:
+
+\begin{lstlisting}
+public/docs/ruting-wang-short-cv.pdf
+public/docs/ruting-wang-full-cv.pdf
+\end{lstlisting}
+
+The website also provides LaTeX source files. The safest route is to send updated CV information to JS Insights so the short PDF, full PDF and both LaTeX files remain consistent.
+
+\begin{tcolorbox}[alert]
+Do not place home addresses, personal telephone numbers, signatures, referee details or other private information in the public website folder.
+\end{tcolorbox}
+
+\subsection{Replace the portrait}
+
+The filename must remain:
+
+\begin{center}
+\pathlabel{public/images/ruting-wang-portrait.webp}
+\end{center}
+
+Cropping and WebP conversion are best handled by JS Insights so the photograph remains correctly framed on desktop and mobile.
+
+\subsection{Files Ruting should not edit}
+
+\begin{lstlisting}
+src/components/
+src/layouts/
+src/styles/
+astro.config.mjs
+package.json
+package-lock.json
+.github/
+\end{lstlisting}
+
+These control layout, typography, responsive behaviour, SEO and deployment.
+
+\subsection{Account safety}
+
+\begin{itemize}
+  \item Turn on two-factor authentication for GitHub and Cloudflare.
+  \item Keep the GitHub repository private.
+  \item Register the personal domain in Ruting's name.
+  \item Keep the ZIP package in two safe places.
+  \item Give JS Insights collaborator access instead of sharing passwords.
+\end{itemize}
+
+\clearpage
+\section{Troubleshooting without panic}
+
+\subsection{A successful update has three green signs}
+
+\begin{enumerate}
+  \item GitHub displays the latest file change.
+  \item Cloudflare shows a green \textbf{Success} deployment.
+  \item The refreshed live page displays the new information.
+\end{enumerate}
+
+\subsection{If Cloudflare shows a red failure}
+
+\begin{tcolorbox}[alert]
+\begin{enumerate}
+  \item Stop making more edits.
+  \item Take one screenshot showing the red deployment and error text.
+  \item Copy the GitHub commit message used for that change.
+  \item Send both to JS Insights.
+\end{enumerate}
+The last successful website normally remains online while the failed new version is investigated.
+\end{tcolorbox}
+
+\subsection{Official help pages}
+
+\begin{itemize}
+  \item \href{https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files}{GitHub - editing files}
+  \item \href{https://docs.github.com/en/desktop/overview/creating-your-first-repository-using-github-desktop}{GitHub - publishing with GitHub Desktop}
+  \item \href{https://docs.github.com/en/repositories/creating-and-managing-repositories/transferring-a-repository}{GitHub - transferring a repository}
+  \item \href{https://developers.cloudflare.com/pages/framework-guides/deploy-an-astro-site/}{Cloudflare - deploying Astro to Pages}
+  \item \href{https://developers.cloudflare.com/pages/configuration/git-integration/}{Cloudflare - Git integration}
+  \item \href{https://developers.cloudflare.com/pages/configuration/custom-domains/}{Cloudflare - custom domains}
+\end{itemize}
+
+\vfill
+\begin{tcolorbox}[navy,left=7mm,right=7mm,top=6mm,bottom=6mm]
+  {\Large\bfseries JS Insights Academic Websites}\par\vspace{1.5mm}
+  \href{https://jsinsights.co.uk/services/academic-websites/}{jsinsights.co.uk/services/academic-websites}\par
+  \href{mailto:contact@jsinsights.co.uk}{contact@jsinsights.co.uk}\par\vspace{3mm}
+  When requesting an update, send the exact text, the relevant link or DOI, and the page where it should appear. Never send account passwords.
+\end{tcolorbox}
+
+\end{document}

@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import TalksSection from '../components/TalksSection.astro';
+import { site } from '../data/site';
+
+const description = `Invited talks, seminars and conference presentations by ${site.name}.`;
+---
+<BaseLayout title="Talks" description={description}>
+  <div class="page-shell">
+    <div class="container">
+      <PageIntro index="T / 03" eyebrow="Talks &amp; presentations" title="Talks" summary="Invited talks, seminars and conference presentations will be added here."/>
+      <TalksSection showEmpty={true}/>
+    </div>
+  </div>
+</BaseLayout>

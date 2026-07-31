@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import { site } from '../data/site';
+
+const journals = ['The Energy Journal', 'Journal of Digital Finance', 'Quantitative Finance', 'Singapore Economic Review', 'Asia-Pacific Journal of Accounting & Economics', 'Emerging Markets Finance and Trade', 'International Review of Financial Analysis'];
+const description = `Academic service by ${site.name}, including editorial roles and peer review.`;
+---
+<BaseLayout title="Service" description={description}>
+  <div class="page-shell">
+    <div class="container">
+      <PageIntro index="S / 05" eyebrow="Academic citizenship" title="Service" summary="Editorial work, peer review and participation in international research networks in digital finance."/>
+
+      <section class="content-block service-block" aria-labelledby="roles-title">
+        <header class="section-heading"><div><p class="eyebrow">Editorial roles</p><h2 id="roles-title">Editorial service</h2></div><p class="section-note">Roles are reported as stated in the July 2026 CV.</p></header>
+        <div class="role-grid">
+          <article class="role-card card"><p class="mono role-code">ED / 01</p><h3>Associate Editor</h3><p class="role-org">Digital Finance · Springer Nature</p></article>
+          <article class="role-card card"><p class="mono role-code">ED / 02</p><h3>Associate Editor &amp; Special Issue Editor</h3><p class="role-org">Management &amp; Marketing · Springer Nature</p><p>Special issue: “Generative AI in Finance”</p></article>
+        </div>
+      </section>
+
+      <section class="content-block" aria-labelledby="review-title">
+        <header class="section-heading"><div><p class="eyebrow">Peer review</p><h2 id="review-title">Refereeing</h2></div><p class="section-note">Journals listed in the current CV.</p></header>
+        <ol class="journal-list" role="list">{journals.map((journal, index) => <li><span class="mono">{String(index + 1).padStart(2, '0')}</span><span>{journal}</span></li>)}</ol>
+      </section>
+
+      <section class="content-block network-band" aria-labelledby="network-title">
+        <div><p class="eyebrow">Research network</p><h2 id="network-title">MSCA Digital Finance</h2></div>
+        <div><p>Member since August 2025. The network brings together academic and industry perspectives on digital finance.</p><a class="button secondary" href="https://www.digital-finance-msca.com/people/ruting-wang" target="_blank" rel="noopener noreferrer">View MSCA profile <span aria-hidden="true">↗</span><span class="visually-hidden"> (opens in a new tab)</span></a></div>
+      </section>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .service-block { margin-top: var(--section); }
+  .role-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem; }
+  .role-card { padding: clamp(1.4rem,3vw,2rem); border-top: 3px solid var(--accent); }
+  .role-code { color: var(--signal); font-size: 0.68rem; }
+  .role-card h3 { margin-top: 1rem; font-size: var(--step-2); }
+  .role-org { margin-top: 0.6rem; color: var(--ink-soft); }
+  .role-card p:last-child:not(.role-org) { margin-top: 0.5rem; color: var(--muted); font-size: 0.88rem; }
+  .journal-list { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); border-top: 1px solid var(--rule); }
+  .journal-list li { display: grid; grid-template-columns: 2.5rem 1fr; gap: 0.7rem; padding: 0.85rem 0; border-bottom: 1px solid var(--rule); }
+  .journal-list li:nth-child(odd) { padding-right: 1rem; }
+  .journal-list li:nth-child(even) { padding-left: 1rem; border-left: 1px solid var(--rule); }
+  .journal-list .mono { color: var(--signal); font-size: 0.68rem; }
+  .network-band { display: grid; grid-template-columns: minmax(14rem,0.65fr) minmax(0,1fr); gap: 2rem; padding: clamp(1.5rem,4vw,2.7rem); background: var(--accent-soft); border: 1px solid var(--rule); }
+  .network-band h2 { margin-top: 0.45rem; }
+  .network-band > div:last-child p { color: var(--ink-soft); margin-bottom: 1.2rem; }
+  @media (max-width: 42rem) { .role-grid, .network-band, .journal-list { grid-template-columns: 1fr; } .journal-list li:nth-child(odd), .journal-list li:nth-child(even) { padding-inline: 0; border-left: 0; } }
+</style>

@@ -1,0 +1,25 @@
+{
+  "name": "ruting-wang-academic-website",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Academic website for Dr Ruting Wang",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "cv:build": "mkdir -p tmp/pdfs/cv-build output/pdf public/docs && cd cv && latexmk -xelatex -interaction=nonstopmode -halt-on-error -outdir=../tmp/pdfs/cv-build ruting-wang-short-cv.tex && latexmk -xelatex -interaction=nonstopmode -halt-on-error -outdir=../tmp/pdfs/cv-build ruting-wang-full-cv.tex && cp ../tmp/pdfs/cv-build/ruting-wang-short-cv.pdf ../output/pdf/ruting-wang-short-cv.pdf && cp ../tmp/pdfs/cv-build/ruting-wang-full-cv.pdf ../output/pdf/ruting-wang-full-cv.pdf && cp ../tmp/pdfs/cv-build/ruting-wang-short-cv.pdf ../output/pdf/ruting-wang-cv.pdf && cp ../tmp/pdfs/cv-build/ruting-wang-short-cv.pdf ../public/docs/ruting-wang-short-cv.pdf && cp ../tmp/pdfs/cv-build/ruting-wang-full-cv.pdf ../public/docs/ruting-wang-full-cv.pdf && cp ruting-wang-short-cv.tex ../public/docs/ruting-wang-short-cv.tex && cp ruting-wang-full-cv.tex ../public/docs/ruting-wang-full-cv.tex && cp ../tmp/pdfs/cv-build/ruting-wang-short-cv.pdf ../public/docs/ruting-wang-cv.pdf && cp ruting-wang-short-cv.tex ../public/docs/ruting-wang-cv.tex",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.2.1",
+    "@fontsource-variable/newsreader": "^5.1.0",
+    "@fontsource-variable/manrope": "^5.1.0",
+    "@fontsource-variable/jetbrains-mono": "^5.1.0",
+    "astro": "^5.5.0"
+  },
+  "devDependencies": {
+    "sharp": "^0.33.5"
+  }
+}

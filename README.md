@@ -39,7 +39,7 @@ Cloudflare Pages settings:
 
 ## CV files
 
-Editable LaTeX sources are in `cv/`. Website downloads are in `public/docs/`. Build both short and full CV editions with:
+The source CV PDF is in `cv/`. Website downloads are served from `public/docs/`. Copy the current CV into the website download location with:
 
 ```sh
 npm run cv:build

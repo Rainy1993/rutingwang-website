@@ -8,7 +8,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
-    "cv:build": "mkdir -p tmp/pdfs/cv-build output/pdf public/docs && cd cv && latexmk -xelatex -interaction=nonstopmode -halt-on-error -outdir=../tmp/pdfs/cv-build ruting-wang-short-cv.tex && latexmk -xelatex -interaction=nonstopmode -halt-on-error -outdir=../tmp/pdfs/cv-build ruting-wang-full-cv.tex && cp ../tmp/pdfs/cv-build/ruting-wang-short-cv.pdf ../output/pdf/ruting-wang-short-cv.pdf && cp ../tmp/pdfs/cv-build/ruting-wang-full-cv.pdf ../output/pdf/ruting-wang-full-cv.pdf && cp ../tmp/pdfs/cv-build/ruting-wang-short-cv.pdf ../output/pdf/ruting-wang-cv.pdf && cp ../tmp/pdfs/cv-build/ruting-wang-short-cv.pdf ../public/docs/ruting-wang-short-cv.pdf && cp ../tmp/pdfs/cv-build/ruting-wang-full-cv.pdf ../public/docs/ruting-wang-full-cv.pdf && cp ruting-wang-short-cv.tex ../public/docs/ruting-wang-short-cv.tex && cp ruting-wang-full-cv.tex ../public/docs/ruting-wang-full-cv.tex && cp ../tmp/pdfs/cv-build/ruting-wang-short-cv.pdf ../public/docs/ruting-wang-cv.pdf && cp ruting-wang-short-cv.tex ../public/docs/ruting-wang-cv.tex",
+    "cv:build": "mkdir -p output/pdf public/docs && cp 'cv/20261231 Ruting curriculum vitae.pdf' output/pdf/ruting-wang-cv.pdf && cp 'cv/20261231 Ruting curriculum vitae.pdf' public/docs/ruting-wang-cv.pdf",
     "preview": "astro preview",
     "astro": "astro"
   },

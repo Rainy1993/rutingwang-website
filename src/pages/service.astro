@@ -24,10 +24,6 @@ const description = `Academic service by ${site.name}, including editorial roles
         <ol class="journal-list" role="list">{journals.map((journal, index) => <li><span class="mono">{String(index + 1).padStart(2, '0')}</span><span>{journal}</span></li>)}</ol>
       </section>
 
-      <section class="content-block network-band" aria-labelledby="network-title">
-        <div><p class="eyebrow">Research network</p><h2 id="network-title">MSCA Digital Finance</h2></div>
-        <div><p>Member since August 2025. The network brings together academic and industry perspectives on digital finance.</p><a class="button secondary" href="https://www.digital-finance-msca.com/people/ruting-wang" target="_blank" rel="noopener noreferrer">View MSCA profile <span aria-hidden="true">↗</span><span class="visually-hidden"> (opens in a new tab)</span></a></div>
-      </section>
     </div>
   </div>
 </BaseLayout>
@@ -45,8 +41,5 @@ const description = `Academic service by ${site.name}, including editorial roles
   .journal-list li:nth-child(odd) { padding-right: 1rem; }
   .journal-list li:nth-child(even) { padding-left: 1rem; border-left: 1px solid var(--rule); }
   .journal-list .mono { color: var(--signal); font-size: 0.68rem; }
-  .network-band { display: grid; grid-template-columns: minmax(14rem,0.65fr) minmax(0,1fr); gap: 2rem; padding: clamp(1.5rem,4vw,2.7rem); background: var(--accent-soft); border: 1px solid var(--rule); }
-  .network-band h2 { margin-top: 0.45rem; }
-  .network-band > div:last-child p { color: var(--ink-soft); margin-bottom: 1.2rem; }
-  @media (max-width: 42rem) { .role-grid, .network-band, .journal-list { grid-template-columns: 1fr; } .journal-list li:nth-child(odd), .journal-list li:nth-child(even) { padding-inline: 0; border-left: 0; } }
+  @media (max-width: 42rem) { .role-grid, .journal-list { grid-template-columns: 1fr; } .journal-list li:nth-child(odd), .journal-list li:nth-child(even) { padding-inline: 0; border-left: 0; } }
 </style>

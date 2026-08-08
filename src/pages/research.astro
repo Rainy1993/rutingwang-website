@@ -6,6 +6,28 @@ import { researchThemes, grants } from '../data/research';
 import { workingPapers } from '../data/publications';
 import { site } from '../data/site';
 
+const networks = [
+  {
+    title: 'Laboratory of Energy Economics and Environmental Management',
+    description:
+      'Member since December 2024. E3M is committed to exploring the dynamic interplay among economic systems, energy transitions, and environmental sustainability.',
+    href: 'https://www.cityu.edu.hk/see_eeem/index.html',
+    cta: 'View E3M website',
+  },
+  {
+    title: 'MSCA Digital Finance',
+    description: 'Member since August 2025. The network brings together academic and industry perspectives on digital finance.',
+    href: 'https://www.digital-finance-msca.com/people/ruting-wang',
+    cta: 'View MSCA profile',
+  },
+  {
+    title: 'Institute for Digital Assets',
+    description:
+      'Member since December 2023. Global research and educational institution dedicated to advancing the understanding, adoption, and integration of digital assets into the economy and society.',
+    href: 'https://www.theida.net/',
+    cta: 'View IDA profile',
+  },
+];
 const description = `Research by ${site.name} on systemic risk, digital assets, climate finance, corporate finance and machine learning.`;
 ---
 <BaseLayout title="Research" description={description}>
@@ -22,6 +44,19 @@ const description = `Research by ${site.name} on systemic risk, digital assets, 
             </li>
           ))}
         </ul>
+      </section>
+
+      <section class="content-block network-section" aria-labelledby="network-title">
+        <header class="section-heading"><div><p class="eyebrow">Research network</p><h2 id="network-title">International networks</h2></div></header>
+        <div class="network-grid">
+          {networks.map((network) => (
+            <article class="network-card">
+              <h3>{network.title}</h3>
+              <p>{network.description}</p>
+              <a class="button secondary" href={network.href} target="_blank" rel="noopener noreferrer">{network.cta} <span aria-hidden="true">↗</span><span class="visually-hidden"> (opens in a new tab)</span></a>
+            </article>
+          ))}
+        </div>
       </section>
 
       <section class="content-block" aria-labelledby="grants-title">
@@ -54,6 +89,11 @@ const description = `Research by ${site.name} on systemic risk, digital assets, 
   .theme-list h3 { max-width: 36ch; font-size: clamp(1.35rem,1.25rem + 0.48vw,1.65rem); font-weight: 570; letter-spacing: -0.012em; line-height: 1.3; }
   .theme-list p { max-width: 63ch; margin-top: 0.65rem; color: var(--ink-soft); font-size: 0.97rem; line-height: 1.65; }
   .theme-list .tag-list { margin-top: 1.05rem; }
+  .network-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem; }
+  .network-card { display: grid; align-content: start; gap: 1rem; padding: clamp(1.5rem,4vw,2.7rem); background: var(--accent-soft); border: 1px solid var(--rule); }
+  .network-card h3 { font-size: var(--step-2); }
+  .network-card p { color: var(--ink-soft); }
+  .network-card .button { justify-self: start; }
   .grant-list { border-top: 1px solid var(--rule); }
   .grant { display: grid; grid-template-columns: 12rem minmax(0,1fr); gap: clamp(1.2rem,4vw,3rem); padding-block: 1.6rem; border-bottom: 1px solid var(--rule); }
   .grant-meta { display: grid; align-content: start; gap: 0.25rem; color: var(--muted); font-size: 0.75rem; }
@@ -66,5 +106,5 @@ const description = `Research by ${site.name} on systemic risk, digital assets, 
   .work-card h3 { margin-top: 0.55rem; font-size: 1.08rem; line-height: 1.33; }
   .work-card > p:nth-last-child(2) { margin-top: 0.65rem; color: var(--ink-soft); font-size: 0.84rem; }
   .work-venue { margin-top: 0.25rem; color: var(--muted); font-family: var(--font-serif); font-size: 0.9rem; font-style: italic; }
-  @media (max-width: 46rem) { .working-grid { grid-template-columns: 1fr; } .grant { grid-template-columns: 1fr; gap: 0.6rem; } }
+  @media (max-width: 46rem) { .working-grid, .network-grid { grid-template-columns: 1fr; } .grant { grid-template-columns: 1fr; gap: 0.6rem; } }
 </style>

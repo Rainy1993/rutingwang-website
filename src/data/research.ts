@@ -3,36 +3,36 @@ export const researchThemes = [
     ref: '01',
     title: 'Financial market',
     highlights: [
-      'Measuring systemic risk, tail dependence and financial-market stress transmission.',
-      'Studying network risk across financial institutions, asset classes and market segments.',
-      'Developing Financial Risk Meter applications for China and cryptocurrency markets.',
+      'Develop Financial Risk Meter (FRM) for dynamic systemic risk measurement.',
+      'Analyze tail-risk transmission across financial markets.',
+      'Construct FRM-based portfolio strategies.',
     ],
   },
   {
     ref: '02',
     title: 'Digital assets',
     highlights: [
-      'Studying cryptocurrency risk, market innovation and protocol-driven financial change.',
-      'Analysing investor responses to Ethereum development milestones and the Merge.',
-      'Connecting digital-asset markets with risk measurement, energy use and financial stability.',
+      'Revisit the “pricing kernel puzzle” in digital asset markets.',
+      'Investigate pricing mechanisms and systemic risk contagion in digital assets.',
+      'Quantify the energy savings associated with Proof-of-Stake consensus mechanisms.',
     ],
   },
   {
     ref: '03',
     title: 'Sustainability economics',
     highlights: [
-      'Measuring carbon risk dynamics and market-implied stranded-asset risk.',
-      'Examining how climate policy, disclosure and transition risk affect financial markets.',
-      'Studying the links among energy systems, sustainability and capital-market responses.',
+      'Quantify carbon-risk dynamics and their pricing in financial markets.',
+      'Develope a framework to trace stranded-asset losses from physical assets to asset holders and interconnected firms.',
+      'Identify global patterns of climate mitigation and adaptation under evolving climate policies.',
     ],
   },
   {
     ref: '04',
     title: 'Resource allocation',
     highlights: [
-      'Examining how debt, implicit guarantees and financial frictions shape capital allocation.',
-      'Studying institutional shocks, reform episodes and their real economic consequences.',
-      'Using machine learning and causal inference to evaluate allocation efficiency and policy effects.',
+      'Examine how implicit guarantees shape capital allocation.',
+      'Study institutional shocks and their real economic consequences.',
+      'Use machine learning and causal inference to evaluate allocation efficiency and policy effects.',
     ],
   },
 ] as const;

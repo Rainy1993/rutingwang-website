@@ -10,7 +10,7 @@ export const site = {
   email: 'rutiwang@cityu.edu.hk',
   emailSecondary: 'wangrt6@mail.sysu.edu.cn',
   summary:
-    'I study financial risk, digital assets, corporate finance and climate-related capital reallocation, using machine learning and modern causal inference to understand how risks travel through markets and institutions.',
+    'My work lies at the intersection of finance, sustainability economics, and digital assets. I am particularly interested in using machine learning and modern causal inference methods to understand how risks propagate through markets and institutions, and how institutional shocks reshape resource allocation',
   tagline: 'Financial risk · Digital assets · Climate finance',
   nav: [
     { label: 'Home', href: '/' },

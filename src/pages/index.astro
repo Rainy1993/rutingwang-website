@@ -15,7 +15,6 @@ const description = `${site.name} is a finance researcher working on financial r
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-copy">
-        <p class="hero-code mono">FIN / ML / RISK <span aria-hidden="true">—</span> 2026</p>
         <h1><span class="hero-name">{site.name}</span></h1>
         <p class="hero-role">{site.role}</p>
         <p class="hero-affiliation">{site.affiliation}</p>
@@ -30,7 +29,6 @@ const description = `${site.name} is a finance researcher working on financial r
       <aside class="hero-aside" aria-label="Portrait and academic profiles">
         <div class="portrait-wrap">
           <img src={`${base}/images/ruting-wang-portrait.webp`} width="724" height="1086" alt="Ruting Wang" fetchpriority="high" />
-          <div class="portrait-caption"><span>Ruting Wang</span><span class="mono">RW · 01</span></div>
         </div>
         <nav class="profile-row" aria-label="Academic profiles">
           {site.profiles.slice(0, 4).map((profile) => (
@@ -46,8 +44,7 @@ const description = `${site.name} is a finance researcher working on financial r
   <section class="index-strip" aria-labelledby="focus-title">
     <div class="container focus-grid">
       <div class="focus-heading">
-        <p class="eyebrow">Research index</p>
-        <h2 id="focus-title">Five connected lines of enquiry</h2>
+        <p id="focus-title" class="eyebrow">Research index</p>
       </div>
       <ol class="focus-list" role="list">
         {researchThemes.map((theme) => (
@@ -117,24 +114,21 @@ const description = `${site.name} is a finance researcher working on financial r
 <style>
   .hero { padding-block: clamp(3rem, 6vw, 6.5rem); }
   .hero-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(17rem, 0.7fr); gap: clamp(2rem, 6vw, 6rem); align-items: center; }
-  .hero-code { color: var(--signal); font-size: 0.7rem; letter-spacing: 0.12em; margin-bottom: 1.4rem; }
   .hero-copy h1 { max-width: 100%; font-size: clamp(2.35rem, 1.75rem + 2.4vw, 3.85rem); }
   .hero-copy h1 .hero-name { display: inline-block; white-space: nowrap; }
   .hero-role { margin-top: 1.6rem; color: var(--accent-deep); font-family: var(--font-serif); font-size: var(--step-2); font-weight: 600; }
   .hero-affiliation { margin-top: 0.25rem; color: var(--muted); font-size: 0.9rem; }
-  .hero-lede { max-width: 50ch; margin-top: 1.45rem; font-family: var(--font-serif); font-size: var(--step-1); line-height: 1.5; color: var(--ink-soft); }
+  .hero-lede { max-width: 50ch; margin-top: 1.45rem; font-family: var(--font-serif); font-size: var(--step-1); line-height: 1.5; color: var(--ink-soft); text-align: justify; }
   .hero-buttons { margin-top: 2rem; }
   .hero-aside { max-width: 25rem; justify-self: end; }
   .portrait-wrap { border: 1px solid var(--rule); background: var(--surface); padding: 0.65rem; box-shadow: var(--shadow); }
   .portrait-wrap img { width: 100%; aspect-ratio: 2 / 2.55; object-fit: cover; object-position: 50% 30%; filter: saturate(0.84) contrast(1.02); }
-  .portrait-caption { display: flex; justify-content: space-between; gap: 1rem; padding: 0.55rem 0.2rem 0.05rem; color: var(--muted); font-size: 0.7rem; }
   .profile-row { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 0.45rem; margin-top: 0.7rem; }
   .profile-row a { display: grid; justify-items: center; gap: 0.32rem; padding: 0.6rem 0.25rem; border: 1px solid var(--rule); border-radius: var(--radius); background: var(--surface); color: var(--muted); font-size: 0.64rem; font-weight: 600; text-decoration: none; }
   .profile-row a:hover { border-color: var(--accent); color: var(--accent); }
   .profile-row :global(.profile-icon) { width: 1.8rem; height: 1.8rem; flex-basis: 1.8rem; }
   .index-strip { background: var(--night); color: #d8d3d8; border-block: 3px solid #305e69; padding-block: clamp(1.5rem, 3vw, 2.2rem); }
-  .focus-grid { display: grid; grid-template-columns: minmax(12rem, 0.6fr) minmax(0, 1.5fr); gap: 2rem; align-items: start; }
-  .focus-heading h2 { margin-top: 0.35rem; color: #fffaf5; font-size: var(--step-2); }
+  .focus-grid { display: grid; gap: 0.85rem; align-items: start; }
   .focus-heading .eyebrow { color: #9dcbd4; }
   .focus-list { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0; border-top: 1px solid rgba(255,255,255,0.15); }
   .focus-list li { display: grid; grid-template-columns: 2rem minmax(0,1fr); gap: 0.7rem; align-items: baseline; padding: 0.72rem 0; border-bottom: 1px solid rgba(255,255,255,0.15); }
@@ -161,7 +155,6 @@ const description = `${site.name} is a finance researcher working on financial r
     .path-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 40rem) {
-    .focus-grid { grid-template-columns: 1fr; }
     .focus-list { grid-template-columns: 1fr; }
     .focus-list li:nth-child(odd), .focus-list li:nth-child(even) { padding-inline: 0; border-left: 0; }
   }

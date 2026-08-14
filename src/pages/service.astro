@@ -9,15 +9,15 @@ const description = `Academic service by ${site.name}, including editorial roles
   <div class="page-shell">
     <div class="container">
       <section class="content-block service-block" aria-labelledby="roles-title">
-        <header class="section-heading"><div><p class="eyebrow">Editorial roles</p><h2 id="roles-title">Editorial service</h2></div><p class="section-note">Roles are reported as stated in the July 2026 CV.</p></header>
+        <header class="section-heading"><div><p class="eyebrow">Editorial roles</p><h2 id="roles-title">Editorial service</h2></div></header>
         <div class="role-grid">
-          <article class="role-card card"><p class="mono role-code">ED / 01</p><h3>Associate Editor</h3><p class="role-org">Digital Finance · Springer Nature</p></article>
-          <article class="role-card card"><p class="mono role-code">ED / 02</p><h3>Associate Editor &amp; Special Issue Editor</h3><p class="role-org">Management &amp; Marketing · Springer Nature</p><p>Special issue: “Generative AI in Finance”</p></article>
+          <article class="role-card card"><p class="mono role-code">ED / 01</p><h3>Associate Editor</h3><p class="role-org"><a class="text-link" href="https://link.springer.com/journal/42521" target="_blank" rel="noopener noreferrer">Digital Finance · Springer Nature<span class="visually-hidden"> (opens in a new tab)</span></a></p></article>
+          <article class="role-card card"><p class="mono role-code">ED / 02</p><h3>Associate Editor &amp; Special Issue Editor</h3><p class="role-org">Management &amp; Marketing · Springer Nature</p><p>Special issue: <a class="text-link" href="https://link.springer.com/collections/ehheeffcfa" target="_blank" rel="noopener noreferrer">“Generative AI in Finance”<span class="visually-hidden"> (opens in a new tab)</span></a></p></article>
         </div>
       </section>
 
       <section class="content-block" aria-labelledby="review-title">
-        <header class="section-heading"><div><p class="eyebrow">Peer review</p><h2 id="review-title">Refereeing</h2></div><p class="section-note">Journals listed in the current CV.</p></header>
+        <header class="section-heading"><div><p class="eyebrow">Peer review</p><h2 id="review-title">Refereeing</h2></div></header>
         <ol class="journal-list" role="list">{journals.map((journal, index) => <li><span class="mono">{String(index + 1).padStart(2, '0')}</span><span>{journal}</span></li>)}</ol>
       </section>
 

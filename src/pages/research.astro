@@ -1,8 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import TalksSection from '../components/TalksSection.astro';
 import { researchThemes, grants } from '../data/research';
-import { workingPapers } from '../data/publications';
 import { site } from '../data/site';
 import e3mLogo from '../../logo/E3M.png';
 import digitalFinanceLogo from '../../logo/DigitalFinance.png';
@@ -10,11 +8,12 @@ import idaLogo from '../../logo/IDA.png';
 
 const networks = [
   {
-    title: 'Laboratory of Energy Economics and Environmental Management',
+    title: 'E3M Laboratory',
     description:
       'First advanced research center in Hong Kong dedicated to the economic analysis of energy and environmental issues.',
     href: 'https://www.cityu.edu.hk/see_eeem/index.html',
     logo: e3mLogo,
+    logoClass: 'logo-e3m',
     cta: 'View E3M website',
   },
   {
@@ -22,6 +21,7 @@ const networks = [
     description: 'An MSCA-funded network in digital finance across academia, industry, technology, and policy organizations.',
     href: 'https://www.digital-finance-msca.com',
     logo: digitalFinanceLogo,
+    logoClass: 'logo-digital-finance',
     cta: 'View MSCA profile',
   },
   {
@@ -30,6 +30,7 @@ const networks = [
       'Global research and educational institution dedicated to advancing the understanding, adoption, and integration of digital assets into the economy and society.',
     href: 'https://www.theida.net/',
     logo: idaLogo,
+    logoClass: 'logo-ida',
     cta: 'View IDA profile',
   },
 ];
@@ -61,7 +62,7 @@ const description = `Research by ${site.name} on systemic risk, digital assets, 
           {networks.map((network) => (
             <article class="network-card">
               <div class="network-logo-wrap">
-                <img src={network.logo.src} width={network.logo.width} height={network.logo.height} alt={`${network.title} logo`} loading="lazy" decoding="async" />
+                <img class={network.logoClass} src={network.logo.src} width={network.logo.width} height={network.logo.height} alt={`${network.title} logo`} loading="lazy" decoding="async" />
               </div>
               <h3><a class="text-link" href={network.href} target="_blank" rel="noopener noreferrer">{network.title}<span class="visually-hidden"> (opens in a new tab)</span></a></h3>
               <p>{network.description}</p>
@@ -79,17 +80,6 @@ const description = `Research by ${site.name} on systemic risk, digital assets, 
           ))}
         </div>
       </section>
-
-      <section class="content-block" aria-labelledby="working-title">
-        <header class="section-heading"><div><p class="eyebrow">Current pipeline</p><h2 id="working-title">Research in progress</h2></div></header>
-        <div class="working-grid">
-          {workingPapers.map((paper) => (
-            <article class="work-card card"><p class="mono work-status">{paper.status}</p><h3>{paper.href ? <a class="text-link" href={paper.href} target="_blank" rel="noopener noreferrer">{paper.title}<span class="visually-hidden"> (opens in a new tab)</span></a> : paper.title}</h3><p>{paper.authors}</p><p class="work-venue">{paper.venue}</p></article>
-          ))}
-        </div>
-      </section>
-
-      <TalksSection/>
     </div>
   </div>
 </BaseLayout>
@@ -103,23 +93,20 @@ const description = `Research by ${site.name} on systemic risk, digital assets, 
   .theme-card ul { display: grid; gap: 0.65rem; margin-top: 1rem; padding-left: 1.1rem; color: var(--ink-soft); font-size: 0.95rem; line-height: 1.6; }
   .theme-card li::marker { color: var(--signal); }
   .network-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; }
-  .network-card { display: grid; align-content: start; gap: 1rem; min-height: 100%; padding: clamp(1.35rem,3vw,2rem); background: var(--surface); border: 1px solid var(--rule); border-top: 3px solid var(--signal); }
-  .network-logo-wrap { display: flex; align-items: center; justify-content: flex-start; min-height: 4rem; }
-  .network-logo-wrap img { display: block; width: auto; max-width: min(12rem,100%); max-height: 3.25rem; object-fit: contain; }
+  .network-card { display: grid; grid-template-rows: 5.5rem auto 1fr auto; gap: 1rem; min-height: 100%; padding: clamp(1.35rem,3vw,2rem); background: var(--surface); border: 1px solid var(--rule); border-top: 3px solid var(--signal); }
+  .network-logo-wrap { display: flex; align-items: center; justify-content: flex-start; min-height: 5.5rem; overflow: visible; }
+  .network-logo-wrap img { display: block; width: auto; object-fit: contain; transform-origin: left center; }
+  .network-logo-wrap .logo-e3m { max-width: 4.8rem; max-height: 4.8rem; transform: scale(1.9); }
+  .network-logo-wrap .logo-digital-finance { max-width: 5.8rem; max-height: 4.7rem; transform: scale(1.7); }
+  .network-logo-wrap .logo-ida { max-width: 15.5rem; max-height: 4.7rem; }
   .network-card h3 { font-size: clamp(1.2rem,1.08rem + 0.42vw,1.45rem); font-weight: 570; line-height: 1.28; text-wrap: balance; }
   .network-card p { color: var(--ink-soft); font-size: 0.95rem; line-height: 1.6; }
-  .network-card .button { justify-self: start; }
+  .network-card .button { align-self: end; justify-self: start; }
   .grant-list { border-top: 1px solid var(--rule); }
   .grant { display: grid; grid-template-columns: 12rem minmax(0,1fr); gap: clamp(1.2rem,4vw,3rem); padding-block: 1.6rem; border-bottom: 1px solid var(--rule); }
   .grant-meta { display: grid; align-content: start; gap: 0.25rem; color: var(--muted); font-size: 0.75rem; }
   .grant-meta .mono { color: var(--signal); }
   .grant-funder { color: var(--copper); font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.04em; text-transform: uppercase; }
   .grant h3 { max-width: 100%; margin-top: 0.45rem; font-size: var(--step-1); line-height: 1.35; text-wrap: wrap; }
-  .working-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0.85rem; }
-  .work-card { padding: 1.25rem; }
-  .work-status { color: var(--copper); font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; }
-  .work-card h3 { margin-top: 0.55rem; font-size: 1.08rem; line-height: 1.33; }
-  .work-card > p:nth-last-child(2) { margin-top: 0.65rem; color: var(--ink-soft); font-size: 0.84rem; }
-  .work-venue { margin-top: 0.25rem; color: var(--muted); font-family: var(--font-serif); font-size: 0.9rem; font-style: italic; }
-  @media (max-width: 46rem) { .theme-list, .working-grid, .network-grid { grid-template-columns: 1fr; } .grant { grid-template-columns: 1fr; gap: 0.6rem; } }
+  @media (max-width: 46rem) { .theme-list, .network-grid { grid-template-columns: 1fr; } .grant { grid-template-columns: 1fr; gap: 0.6rem; } }
 </style>

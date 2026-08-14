@@ -8,6 +8,9 @@ const label = pub.category === 'journal' ? 'Journal article' : pub.category === 
 
 <article class="publication">
   {showYear && <time class="pub-year mono" datetime={String(pub.year)}>{pub.year}</time>}
+  <div class="pub-topics" aria-label="Research topics">
+    {pub.researchTopics.map((topic) => <span>{topic}</span>)}
+  </div>
   <div class="pub-body">
     <p class="pub-type mono">{pub.status ?? label}</p>
     <h3>{href ? <a href={href} target="_blank" rel="noopener noreferrer">{pub.title}<span class="visually-hidden"> (opens in a new tab)</span></a> : pub.title}</h3>
@@ -21,13 +24,15 @@ const label = pub.category === 'journal' ? 'Journal article' : pub.category === 
 <style>
   .publication {
     display: grid;
-    grid-template-columns: 4.4rem minmax(0, 1fr);
+    grid-template-columns: 4.4rem minmax(8.5rem, 11rem) minmax(0, 1fr);
     gap: clamp(1rem, 2.5vw, 2rem);
     padding-block: 1.45rem;
     border-top: 1px solid var(--rule);
   }
   .publication:last-child { border-bottom: 1px solid var(--rule); }
   .pub-year { color: var(--signal); font-size: 0.78rem; letter-spacing: 0.05em; padding-top: 0.28rem; }
+  .pub-topics { display: flex; flex-wrap: wrap; align-content: flex-start; gap: 0.38rem; padding-top: 0.1rem; }
+  .pub-topics span { border: 1px solid var(--rule); color: var(--accent); font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.08em; line-height: 1.35; padding: 0.28rem 0.42rem; text-transform: uppercase; }
   .pub-body { min-width: 0; }
   .pub-type { font-size: 0.66rem; color: var(--copper); text-transform: uppercase; letter-spacing: 0.11em; margin-bottom: 0.35rem; }
   h3 { font-size: var(--step-1); line-height: 1.28; max-width: 42ch; }
@@ -40,5 +45,6 @@ const label = pub.category === 'journal' ? 'Journal article' : pub.category === 
   .pub-link a { font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent); overflow-wrap: anywhere; }
   @media (max-width: 32rem) {
     .publication { grid-template-columns: 1fr; gap: 0.2rem; }
+    .pub-topics { padding-top: 0; }
   }
 </style>

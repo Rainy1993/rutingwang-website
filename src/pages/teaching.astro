@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { site } from '../data/site';
+import quantinarLogo from '../../logo/quantinar.png';
+import quantletLogo from '../../logo/quantlet.png';
 
 const teaching = [
   { period: 'August 2025', course: 'Machine Learning in Financial Risk', institution: 'Data without Borders: Building AI Competence across Borders · Romania', href: 'https://www.fabiz.ase.ro/bip-2025/', detail: 'Summer course' },
@@ -36,7 +38,19 @@ const description = `Teaching by ${site.name} in financial risk, machine learnin
       </section>
 
       <section class="content-block" aria-labelledby="online-title">
-        <header class="section-heading"><div><p class="eyebrow">Open learning</p><h2 id="online-title">Quantinar courses &amp; courselets</h2></div></header>
+        <header class="section-heading course-heading">
+          <div><p class="eyebrow">Open learning</p><h2 id="online-title">Quantinar courses &amp; courselets</h2></div>
+          <div class="learning-logos" aria-label="Learning platform links">
+            <a href="https://quantinar.com/search?searchTerm=ruting+wang+" target="_blank" rel="noopener noreferrer">
+              <img src={quantinarLogo.src} width={quantinarLogo.width} height={quantinarLogo.height} alt="Quantinar" loading="lazy" decoding="async" />
+              <span class="visually-hidden">Quantinar search results for Ruting Wang (opens in a new tab)</span>
+            </a>
+            <a href="https://quantlet.com/SearchResult?query=ruting%20wang" target="_blank" rel="noopener noreferrer">
+              <img src={quantletLogo.src} width={quantletLogo.width} height={quantletLogo.height} alt="Quantlet" loading="lazy" decoding="async" />
+              <span class="visually-hidden">Quantlet search results for Ruting Wang (opens in a new tab)</span>
+            </a>
+          </div>
+        </header>
         <div class="course-grid">
           {quantinar.map((course, index) => (
             <a class="course-card card" href={course.href} target="_blank" rel="noopener noreferrer">
@@ -50,6 +64,11 @@ const description = `Teaching by ${site.name} in financial risk, machine learnin
 </BaseLayout>
 
 <style>
+  .course-heading { align-items: end; gap: 1.2rem; }
+  .learning-logos { display: flex; align-items: center; justify-content: flex-end; gap: 0.8rem; }
+  .learning-logos a { display: flex; align-items: center; justify-content: center; width: 6.2rem; height: 4.4rem; border: 1px solid var(--rule); background: var(--surface); transition: border-color 0.15s ease, transform 0.15s ease; }
+  .learning-logos a:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .learning-logos img { display: block; width: auto; max-width: 4.7rem; max-height: 3.2rem; object-fit: contain; }
   .course-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0.85rem; }
   .course-card { display: grid; align-content: start; padding: 1.3rem; color: inherit; text-decoration: none; transition: border-color 0.15s ease, transform 0.15s ease; }
   .course-card:hover { border-color: var(--accent); transform: translateY(-1px); }
@@ -57,5 +76,9 @@ const description = `Teaching by ${site.name} in financial risk, machine learnin
   .course-card h3 { margin-top: 0.75rem; font-size: var(--step-1); }
   .course-card p { margin-top: 0.65rem; color: var(--ink-soft); font-size: 0.9rem; }
   .course-link { align-self: end; margin-top: 1rem; color: var(--accent); font-size: 0.78rem; font-weight: 650; }
-  @media (max-width: 44rem) { .course-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 44rem) {
+    .course-heading { align-items: start; }
+    .learning-logos { justify-content: flex-start; }
+    .course-grid { grid-template-columns: 1fr; }
+  }
 </style>

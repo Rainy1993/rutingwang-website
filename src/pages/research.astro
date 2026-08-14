@@ -4,26 +4,32 @@ import TalksSection from '../components/TalksSection.astro';
 import { researchThemes, grants } from '../data/research';
 import { workingPapers } from '../data/publications';
 import { site } from '../data/site';
+import e3mLogo from '../../logo/E3M.png';
+import digitalFinanceLogo from '../../logo/DigitalFinance.png';
+import idaLogo from '../../logo/IDA.png';
 
 const networks = [
   {
     title: 'Laboratory of Energy Economics and Environmental Management',
     description:
-      'Member since December 2024. E3M is committed to exploring the dynamic interplay among economic systems, energy transitions, and environmental sustainability.',
+      'First advanced research center in Hong Kong dedicated to the economic analysis of energy and environmental issues.',
     href: 'https://www.cityu.edu.hk/see_eeem/index.html',
+    logo: e3mLogo,
     cta: 'View E3M website',
   },
   {
     title: 'MSCA Digital Finance',
-    description: 'Member since August 2025. The network brings together academic and industry perspectives on digital finance.',
-    href: 'https://www.digital-finance-msca.com/people/ruting-wang',
+    description: 'An MSCA-funded network in digital finance across academia, industry, technology, and policy organizations.',
+    href: 'https://www.digital-finance-msca.com',
+    logo: digitalFinanceLogo,
     cta: 'View MSCA profile',
   },
   {
     title: 'Institute for Digital Assets',
     description:
-      'Member since December 2023. Global research and educational institution dedicated to advancing the understanding, adoption, and integration of digital assets into the economy and society.',
+      'Global research and educational institution dedicated to advancing the understanding, adoption, and integration of digital assets into the economy and society.',
     href: 'https://www.theida.net/',
+    logo: idaLogo,
     cta: 'View IDA profile',
   },
 ];
@@ -54,7 +60,10 @@ const description = `Research by ${site.name} on systemic risk, digital assets, 
         <div class="network-grid">
           {networks.map((network) => (
             <article class="network-card">
-              <h3>{network.title}</h3>
+              <div class="network-logo-wrap">
+                <img src={network.logo.src} width={network.logo.width} height={network.logo.height} alt={`${network.title} logo`} loading="lazy" decoding="async" />
+              </div>
+              <h3><a class="text-link" href={network.href} target="_blank" rel="noopener noreferrer">{network.title}<span class="visually-hidden"> (opens in a new tab)</span></a></h3>
               <p>{network.description}</p>
               <a class="button secondary" href={network.href} target="_blank" rel="noopener noreferrer">{network.cta} <span aria-hidden="true">↗</span><span class="visually-hidden"> (opens in a new tab)</span></a>
             </article>
@@ -93,10 +102,12 @@ const description = `Research by ${site.name} on systemic risk, digital assets, 
   .theme-card h3 { margin-top: 0.8rem; font-size: clamp(1.35rem,1.25rem + 0.48vw,1.65rem); font-weight: 570; letter-spacing: -0.012em; line-height: 1.3; text-wrap: wrap; }
   .theme-card ul { display: grid; gap: 0.65rem; margin-top: 1rem; padding-left: 1.1rem; color: var(--ink-soft); font-size: 0.95rem; line-height: 1.6; }
   .theme-card li::marker { color: var(--signal); }
-  .network-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem; }
-  .network-card { display: grid; align-content: start; gap: 1rem; padding: clamp(1.5rem,4vw,2.7rem); background: var(--accent-soft); border: 1px solid var(--rule); }
-  .network-card h3 { font-size: var(--step-2); }
-  .network-card p { color: var(--ink-soft); }
+  .network-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; }
+  .network-card { display: grid; align-content: start; gap: 1rem; min-height: 100%; padding: clamp(1.35rem,3vw,2rem); background: var(--surface); border: 1px solid var(--rule); border-top: 3px solid var(--signal); }
+  .network-logo-wrap { display: flex; align-items: center; justify-content: flex-start; min-height: 4rem; }
+  .network-logo-wrap img { display: block; width: auto; max-width: min(12rem,100%); max-height: 3.25rem; object-fit: contain; }
+  .network-card h3 { font-size: clamp(1.2rem,1.08rem + 0.42vw,1.45rem); font-weight: 570; line-height: 1.28; text-wrap: balance; }
+  .network-card p { color: var(--ink-soft); font-size: 0.95rem; line-height: 1.6; }
   .network-card .button { justify-self: start; }
   .grant-list { border-top: 1px solid var(--rule); }
   .grant { display: grid; grid-template-columns: 12rem minmax(0,1fr); gap: clamp(1.2rem,4vw,3rem); padding-block: 1.6rem; border-bottom: 1px solid var(--rule); }

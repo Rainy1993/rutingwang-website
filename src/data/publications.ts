@@ -93,7 +93,7 @@ export const publications: Publication[] = [
   {
     year: 2026,
     title: 'Applied Time Series Analysis and Forecasting with Python: Problems and Solutions',
-    researchTopics: ['Financial market'],
+    researchTopics: [''],
     authors: 'Huang, C., Bag, R., Pele, P., Petukhina, A., Wang, R., & Zuo, X.',
     venue: 'Springer Nature',
     status: 'Forthcoming',
@@ -102,7 +102,7 @@ export const publications: Publication[] = [
   {
     year: 2024,
     title: 'Competition in issuance underwriting and bond market efficiency',
-    researchTopics: ['Resource allocation'],
+    researchTopics: [''],
     authors: 'Wang, R., Ning, K., & Li, G.',
     venue: 'FMA European Conference',
     status: 'Conference paper',

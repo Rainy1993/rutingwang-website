@@ -1,38 +1,39 @@
 export const researchThemes = [
   {
     ref: '01',
-    title: 'Systemic risk & financial networks',
-    summary:
-      'Measuring tail-event dependence, risk transmission and market interconnectedness across financial institutions and asset classes.',
-    topics: ['Financial Risk Meter', 'Network dynamics', 'Tail risk', 'Asset pricing'],
+    title: 'Financial market',
+    highlights: [
+      'Measuring systemic risk, tail dependence and financial-market stress transmission.',
+      'Studying network risk across financial institutions, asset classes and market segments.',
+      'Developing Financial Risk Meter applications for China and cryptocurrency markets.',
+    ],
   },
   {
     ref: '02',
-    title: 'Digital assets & market innovation',
-    summary:
-      'Studying cryptocurrency risk, Ethereum development milestones, protocol transitions and the market consequences of technological change.',
-    topics: ['Cryptocurrencies', 'Ethereum', 'Fintech', 'Market response'],
+    title: 'Digital assets',
+    highlights: [
+      'Studying cryptocurrency risk, market innovation and protocol-driven financial change.',
+      'Analysing investor responses to Ethereum development milestones and the Merge.',
+      'Connecting digital-asset markets with risk measurement, energy use and financial stability.',
+    ],
   },
   {
     ref: '03',
-    title: 'Climate & carbon finance',
-    summary:
-      'Developing market-based measures of carbon and stranded-asset risk, and tracing how climate policy and disclosure affect financial markets.',
-    topics: ['Carbon risk', 'ESG', 'Climate policy', 'Stranded assets'],
+    title: 'Sustainability economics',
+    highlights: [
+      'Measuring carbon risk dynamics and market-implied stranded-asset risk.',
+      'Examining how climate policy, disclosure and transition risk affect financial markets.',
+      'Studying the links among energy systems, sustainability and capital-market responses.',
+    ],
   },
   {
     ref: '04',
-    title: 'Corporate finance & capital allocation',
-    summary:
-      'Examining bank deregulation, government and corporate debt, implicit guarantees and institutional reform as drivers of resource allocation.',
-    topics: ['Corporate debt', 'Bank competition', 'Capital allocation', 'Institutional reform'],
-  },
-  {
-    ref: '05',
-    title: 'Machine learning for causal inference',
-    summary:
-      'Applying quantile methods, regularisation and double machine learning to financial risk measurement and policy-relevant causal questions.',
-    topics: ['Quantile LASSO', 'Double machine learning', 'Causal inference', 'Forecasting'],
+    title: 'Resource allocation',
+    highlights: [
+      'Examining how debt, implicit guarantees and financial frictions shape capital allocation.',
+      'Studying institutional shocks, reform episodes and their real economic consequences.',
+      'Using machine learning and causal inference to evaluate allocation efficiency and policy effects.',
+    ],
   },
 ] as const;
 

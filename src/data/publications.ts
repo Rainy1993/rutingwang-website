@@ -50,6 +50,7 @@ export const publications: Publication[] = [
     authors: 'Peng, F., Wang, R., & Liao, J.',
     venue: 'Economic Theory and Business Management',
     detail: '43(3), 82–97 · in Chinese',
+    href: 'https://oversea.cnki.net/kcms2/article/abstract?v=BoNITJRTahK3cRfcwS4KIOxU-yIebWokIJ07c5Lq7BkZeHWhyVDOT-vBEXfBbrHeLcUewDGsaHs55HlIr2M1Y2-bbr1z15H0Ter0wjmrxbsblaQXdCC1uPtoShHtSj2WTiU6Y-0eH-O-d1PZqRHYQXw9LYEsoJolusNxVk7dTPg8NfY_5tU04Q==&uniplatform=OVERSEA&language=EN',
     category: 'journal',
   },
   {
@@ -58,6 +59,7 @@ export const publications: Publication[] = [
     authors: 'Zhan, K., Wang, R., Nie, Z., & Liao, J.',
     venue: 'Quarterly Journal of Finance',
     detail: '7(1), 77–100 · in Chinese',
+    href: 'https://oversea.cnki.net/kcms2/article/abstract?v=BoNITJRTahK3cRfcwS4KIOxU-yIebWokyjUKXZaI9JYmejPzyhaX7igcp_ERtvNsuC4ubaBpz6wRJt8R0KJqB7smKB9eQBV0D3RpLp74i_hTPrnkBqVBerbsAJTk5fSOUzklTAMqdu9x4I6RN4O81FkGDF37YzwupURBlhMN6lzfkhfqmHyJ1A==&uniplatform=OVERSEA&language=EN',
     category: 'journal',
   },
   {
@@ -66,6 +68,7 @@ export const publications: Publication[] = [
     authors: 'Wang, R., Peng, F., Li, W., & Wang, C.',
     venue: 'Management World',
     detail: '38(4), 42–64 · in Chinese',
+    href: 'https://oversea.cnki.net/kcms2/article/abstract?v=BoNITJRTahIOKj9SQ5jFRLqbEKjcdwjZUw-QWcZemdLxBbWaSXgFbbqbsgzXnHsZBsY8SHMl-w3fAWVx5iIMX5rlMMrzlyv4vrJaARSyb5WkSZkkqlcrFbhc2q235a6qF_IzTvAqKWfHqRqWY-y2YFbsyYvT77pKBgem0bNb-qggzUeqDTBB3A==&uniplatform=OVERSEA&language=EN',
     category: 'journal',
   },
   {
@@ -74,6 +77,7 @@ export const publications: Publication[] = [
     authors: 'Wang, R., Li, W., & Huang, Y.',
     venue: 'Studies of International Finance',
     detail: '392(12), 63–73 · in Chinese',
+    href: 'https://oversea.cnki.net/kcms2/article/abstract?v=BoNITJRTahKfDn0_4vjFMw_FiXiAUdNjN8tq-DktY1uARXgTaX3vRrOywIGWhyLqKe3sEOgf9bUHbRqHG3-pFPKJ9EqwrT1eFYQ5Sr3dKOv-Fu_7FVBzB-Rfi-k6Gp8JVkdcMqfHZOX2JrXQm-RVfXRhrJzoMfHlkzh4bsABGryL8gEhNt5iIg==&uniplatform=OVERSEA&language=EN',
     category: 'journal',
   },
   {
@@ -109,6 +113,7 @@ export const workingPapers: Publication[] = [
     authors: 'Zhou, L., Wang, R., Härdle, W. K., Zuo, X., & Schach, L.',
     venue: 'International Review of Financial Analysis',
     status: 'Under review',
+    href: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5158600',
     category: 'working',
   },
   {
@@ -117,7 +122,7 @@ export const workingPapers: Publication[] = [
     authors: 'Lin, M., Găman, S., Wang, R., & Pele, D. T.',
     venue: 'Journal of International Financial Markets, Institutions & Money',
     status: 'Under review',
-    href: 'https://quantinar.com/course/857/market-responses-to-eth-development-milestones',
+    href: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5176758',
     category: 'working',
   },
   {
@@ -159,6 +164,7 @@ export const workingPapers: Publication[] = [
     authors: 'Woitschig, P., Wang, R., & Härdle, W. K.',
     venue: 'Applied Energy',
     status: 'Under review',
+    href: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4526732',
     category: 'working',
   },
   {
@@ -167,6 +173,7 @@ export const workingPapers: Publication[] = [
     authors: 'Wang, R., Zhang, L., Wang, Z., & Zhou, W.',
     venue: 'Work in progress',
     status: 'In progress',
+    href: 'https://digital-ai-finance.github.io/digital-ai-in-finance/Ruting%20Wang%20Talk/',
     category: 'working',
   },
   {
@@ -175,6 +182,7 @@ export const workingPapers: Publication[] = [
     authors: 'Chen, F., Chen, Y., Lin, A., Wang, R., Chopra, S. S., & Zhang, L.',
     venue: 'Working paper',
     status: 'Working paper',
+    href: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5399550',
     category: 'working',
   },
 ];

@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PageIntro from '../components/PageIntro.astro';
 import PublicationItem from '../components/PublicationItem.astro';
 import { publications, workingPapers } from '../data/publications';
 import { site } from '../data/site';
@@ -13,8 +12,6 @@ const description = `Selected publications and CV-based research record for ${si
 <BaseLayout title="Publications" description={description}>
   <div class="page-shell">
     <div class="container">
-      <PageIntro index="P / 02" eyebrow="Research outputs" title="Publications" summary="Peer-reviewed articles, a forthcoming book, conference work and the current research pipeline. Published work and work under review are kept clearly separate."/>
-
       <section class="content-block selected" aria-labelledby="selected-title">
         <header class="section-heading"><div><p class="eyebrow">Short selection</p><h2 id="selected-title">Selected publications</h2></div><p class="section-note">Three international journal articles selected for their coverage of financial networks, digital assets and financial development.</p></header>
         <div>{featured.map((pub) => <PublicationItem publication={pub}/>)}</div>
@@ -44,7 +41,6 @@ const description = `Selected publications and CV-based research record for ${si
 </BaseLayout>
 
 <style>
-  .selected { margin-top: var(--section); }
   .record-note { display: grid; grid-template-columns: minmax(14rem,0.55fr) minmax(0,1fr); gap: 2rem; margin-top: var(--section); padding: clamp(1.4rem,4vw,2.5rem); border: 1px solid var(--rule); border-left: 3px solid var(--signal); background: var(--surface); }
   .record-note h2 { margin-top: 0.4rem; font-size: var(--step-2); }
   .record-note > p { align-self: center; max-width: 60ch; color: var(--ink-soft); }

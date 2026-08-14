@@ -73,7 +73,6 @@ const description = `${site.name} is a finance researcher working on financial r
     <div class="container">
       <header class="section-heading">
         <div><p class="eyebrow">Selected work</p><h2 id="selected-title">Published research</h2></div>
-        <p class="section-note">Three peer-reviewed articles with verified DOI links. The Publications page separates published work from ongoing research.</p>
       </header>
       <div>{featured.map((pub) => <PublicationItem publication={pub}/>)}</div>
       <div class="button-row section-action"><a class="button secondary" href={`${base}/publications`}>Complete record <span aria-hidden="true">→</span></a></div>

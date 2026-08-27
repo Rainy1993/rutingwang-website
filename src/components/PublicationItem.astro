@@ -12,10 +12,12 @@ const label = pub.category === 'journal' ? 'Journal article' : pub.category === 
     {pub.researchTopics.map((topic) => <span>{topic}</span>)}
   </div>
   <div class="pub-body">
-    <p class="pub-type mono">{pub.status ?? label}</p>
+    <p class:list={["pub-type", "mono", { "rich-status": pub.statusVenue }]}>
+      {pub.status ?? label}{pub.statusVenue && <> in <em>{pub.statusVenue}</em>{pub.statusDetail && ` (${pub.statusDetail})`}</>}
+    </p>
     <h3>{href ? <a href={href} target="_blank" rel="noopener noreferrer">{pub.title}<span class="visually-hidden"> (opens in a new tab)</span></a> : pub.title}</h3>
     <p class="pub-authors">{pub.authors}</p>
-    <p class="pub-source"><em>{pub.venue}</em>{pub.detail ? `, ${pub.detail}` : ''}.</p>
+    {!pub.statusVenue && <p class="pub-source"><em>{pub.venue}</em>{pub.detail ? `, ${pub.detail}` : ''}.</p>}
     {pub.note && <p class="pub-note">{pub.note}</p>}
     {href && <p class="pub-link"><a href={href} target="_blank" rel="noopener noreferrer">{pub.doi ? `DOI ${pub.doi}` : 'Open source'} <span aria-hidden="true">↗</span><span class="visually-hidden"> (opens in a new tab)</span></a></p>}
   </div>
@@ -35,6 +37,7 @@ const label = pub.category === 'journal' ? 'Journal article' : pub.category === 
   .pub-topics span { border: 1px solid var(--rule); color: var(--accent); font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.08em; line-height: 1.35; padding: 0.28rem 0.42rem; text-transform: uppercase; }
   .pub-body { min-width: 0; }
   .pub-type { font-size: 0.66rem; color: var(--copper); text-transform: uppercase; letter-spacing: 0.11em; margin-bottom: 0.35rem; }
+  .pub-type.rich-status { text-transform: none; }
   h3 { font-size: var(--step-1); line-height: 1.28; max-width: 42ch; }
   h3 a { color: var(--ink); text-decoration: none; }
   h3 a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 0.16em; text-decoration-thickness: 1px; }

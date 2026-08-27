@@ -6,6 +6,8 @@ export type Publication = {
   venue: string;
   detail?: string;
   status?: string;
+  statusVenue?: string;
+  statusDetail?: string;
   doi?: string;
   href?: string;
   featured?: boolean;
@@ -192,9 +194,12 @@ export const workingPapers: Publication[] = [
     title: 'Market-implied stranded-asset risk propagates through the financial market',
     researchTopics: ['Financial market', 'Sustainability economics'],
     authors: 'Wang, R., Zhang, L., Wang, Z., & Zhou, W.',
-    venue: 'Work in progress',
-    status: 'In progress',
+    venue: 'Applied Energy',
+    status: 'R&R',
+    statusVenue: 'Applied Energy',
+    statusDetail: 'IF 12.2, JCR Q1',
     href: 'https://digital-ai-finance.github.io/digital-ai-in-finance/Ruting%20Wang%20Talk/',
+    featured: true,
     category: 'working',
   },
   {

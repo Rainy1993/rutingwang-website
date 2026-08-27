@@ -4,7 +4,7 @@ import PublicationItem from '../components/PublicationItem.astro';
 import { publications, workingPapers } from '../data/publications';
 import { site } from '../data/site';
 
-const featured = publications.filter((pub) => pub.featured);
+const featured = [...publications, ...workingPapers].filter((pub) => pub.featured);
 const journals = publications.filter((pub) => pub.category === 'journal');
 const other = publications.filter((pub) => pub.category !== 'journal');
 const description = `Selected publications and CV-based research record for ${site.name}, with verified DOI links.`;

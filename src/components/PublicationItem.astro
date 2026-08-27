@@ -13,11 +13,11 @@ const label = pub.category === 'journal' ? 'Journal article' : pub.category === 
   </div>
   <div class="pub-body">
     <p class:list={["pub-type", "mono", { "rich-status": pub.statusVenue }]}>
-      {pub.status ?? label}{pub.statusVenue && <> in <em>{pub.statusVenue}</em>{pub.statusDetail && ` (${pub.statusDetail})`}</>}
+      {pub.status ?? label}
     </p>
     <h3>{href ? <a href={href} target="_blank" rel="noopener noreferrer">{pub.title}<span class="visually-hidden"> (opens in a new tab)</span></a> : pub.title}</h3>
     <p class="pub-authors">{pub.authors}</p>
-    {!pub.statusVenue && <p class="pub-source"><em>{pub.venue}</em>{pub.detail ? `, ${pub.detail}` : ''}.</p>}
+    <p class="pub-source"><em>{pub.statusVenue ?? pub.venue}</em>{pub.statusDetail ? ` (${pub.statusDetail})` : pub.detail ? `, ${pub.detail}` : ''}.</p>
     {pub.note && <p class="pub-note">{pub.note}</p>}
     {href && <p class="pub-link"><a href={href} target="_blank" rel="noopener noreferrer">{pub.doi ? `DOI ${pub.doi}` : 'Open source'} <span aria-hidden="true">↗</span><span class="visually-hidden"> (opens in a new tab)</span></a></p>}
   </div>

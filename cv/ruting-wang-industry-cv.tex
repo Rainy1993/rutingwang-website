@@ -1,0 +1,161 @@
+% =====================================================================
+%  Ruting Wang - Industry Resume
+%  Local industry-oriented version. Does not replace the website CV.
+%  Compile with XeLaTeX.
+% =====================================================================
+\documentclass[10.5pt]{article}
+\NeedsTeXFormat{LaTeX2e}
+\setcounter{secnumdepth}{0}
+
+\usepackage[a4paper,top=1.35cm,bottom=1.55cm,left=1.65cm,right=1.65cm,footskip=0.75cm]{geometry}
+\usepackage{fontspec}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{needspace}
+\usepackage{fancyhdr}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+
+\definecolor{ink}{HTML}{211F24}
+\definecolor{inksoft}{HTML}{4D4951}
+\definecolor{muted}{HTML}{6D6870}
+\definecolor{plum}{HTML}{653D64}
+\definecolor{plumdeep}{HTML}{472B49}
+\definecolor{signal}{HTML}{2E6878}
+\definecolor{hairline}{HTML}{DCD5CB}
+\definecolor{warm}{HTML}{A4664C}
+
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont{Charter}
+\newfontfamily\sff{Avenir Next}
+\newfontfamily\mono{Menlo}
+\color{ink}
+
+\hypersetup{
+  colorlinks=true,
+  urlcolor=signal,
+  linkcolor=plumdeep,
+  citecolor=plumdeep,
+  pdftitle={Ruting Wang - Industry Resume},
+  pdfauthor={Ruting Wang},
+  pdfsubject={Industry-oriented resume for quantitative finance, risk analytics and sustainability economics},
+  pdfkeywords={quantitative finance, risk analytics, machine learning, causal inference, digital assets, sustainability economics},
+  pdfcreator={XeLaTeX}
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\linespread{1.03}
+\emergencystretch=2.8em
+\hyphenpenalty=1400
+\frenchspacing
+
+\titleformat{\section}
+  {\sff\bfseries\fontsize{9.7}{11.2}\selectfont\color{ink}\addfontfeature{LetterSpace=7.0}}
+  {}{0pt}{\MakeUppercase}
+  [{\vspace{2pt}{\color{plum}\titlerule[1.15pt]}\vspace{-1pt}{\color{hairline}\titlerule[0.45pt]}}]
+\titlespacing*{\section}{0pt}{10pt plus 2pt minus 2pt}{5pt}
+
+\newcommand{\dotsep}{\;\textcolor{hairline}{\textbullet}\;}
+\newcommand{\kicker}[1]{{\sff\fontsize{8}{9.5}\selectfont\color{plum}%
+  \addfontfeature{LetterSpace=10.0}\MakeUppercase{#1}}}
+\newcommand{\lead}[1]{{\fontsize{10.4}{13.5}\selectfont\color{inksoft}#1\par}}
+\newcommand{\cvrow}[2]{%
+  \par\noindent\needspace{2\baselineskip}%
+  \begin{minipage}[t]{0.18\linewidth}\raggedright\sff\footnotesize\color{plum}#1\end{minipage}%
+  \hfill\begin{minipage}[t]{0.80\linewidth}#2\end{minipage}%
+  \par\addvspace{4.3pt}}
+\newcommand{\project}[3]{%
+  \par\noindent\needspace{3\baselineskip}%
+  {\sff\bfseries\fontsize{9.4}{11}\selectfont\color{plumdeep}#1}%
+  \hfill{\sff\fontsize{8.3}{10}\selectfont\color{signal}#2}\par
+  {\fontsize{9.25}{12.1}\selectfont\color{inksoft}#3\par}\addvspace{4.3pt}}
+\newcommand{\compactitem}[1]{\item {\fontsize{9.2}{11.7}\selectfont #1}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\renewcommand{\footrule}{\vskip-7pt{\color{hairline}\hrule height 0.4pt}\vskip5pt}
+\fancyfoot[L]{\sff\fontsize{7.3}{8.5}\selectfont\color{muted}Ruting Wang \textbullet\ Industry Resume}
+\fancyfoot[R]{\sff\fontsize{7.3}{8.5}\selectfont\color{muted}\thepage}
+
+\begin{document}
+\thispagestyle{fancy}
+
+\noindent
+\kicker{Industry Resume \textbullet\ Quantitative Finance \textbullet\ Risk Analytics}\\[5pt]
+{\fontsize{26}{28}\selectfont\color{ink}Ruting Wang}\\[4pt]
+{\fontsize{12.5}{15}\selectfont\itshape\color{plumdeep}Finance PhD specializing in risk modelling, digital assets, sustainability economics and causal ML}\\[6pt]
+{\sff\fontsize{8.1}{11}\selectfont\color{inksoft}
+\href{mailto:rutiwang@cityu.edu.hk}{rutiwang@cityu.edu.hk}\dotsep
+\href{mailto:wangrt6@mail.sysu.edu.cn}{wangrt6@mail.sysu.edu.cn}\dotsep
+\href{https://rutingrainywang.com}{rutingrainywang.com}\dotsep
+\href{https://scholar.google.com/citations?user=tB0js94AAAAJ&hl=en}{Google Scholar}\dotsep
+\href{https://orcid.org/0000-0001-8871-3838}{ORCID}}
+\par\vspace{7pt}
+{\color{plum}\hrule height 1.3pt}\vspace{1.4pt}{\color{hairline}\hrule height 0.45pt}
+
+\section{Professional Summary}
+\lead{Finance researcher with a PhD in Finance and postdoctoral experience at City University of Hong Kong and Sun Yat-sen University. I build empirical tools for measuring financial risk, digital-asset market dynamics, carbon exposure and institutional shocks, using machine learning, causal inference, network methods and time-series modelling. My work is suited to quantitative research, risk analytics, ESG and climate-risk analytics, digital-assets research, market intelligence and policy-facing data science roles.}
+
+\section{Core Capabilities}
+\begin{tabularx}{\linewidth}{@{}>{\sff\bfseries\color{plumdeep}}p{0.245\linewidth} X@{}}
+Risk analytics & Systemic risk, tail dependence, Financial Risk Meter, bond-market risk, institutional shock transmission.\\[3pt]
+Machine learning & Quantile regression, Lasso and regularisation, double machine learning, forecasting, model validation.\\[3pt]
+Causal inference & Policy evaluation, quasi-experimental design, institutional reform, capital allocation and firm behaviour.\\[3pt]
+Digital assets & Cryptocurrency risk, Ethereum protocol events, pricing-kernel volatility, market response and energy use.\\[3pt]
+Sustainability & Carbon-risk dynamics, climate-policy asymmetry, stranded-asset risk and resource reallocation.\\
+\end{tabularx}
+
+\section{Selected Applied Projects}
+\project{Financial Risk Meter for China}{Systemic risk / network analytics}
+{Designed a China-focused systemic-risk indicator using tail-event dependence and quantile-Lasso methods to identify risk transmission among major financial institutions and macro-financial drivers.}
+
+\project{FRM for Crypto Markets}{Digital assets / market risk}
+{Extended network-risk measurement to cryptocurrency markets, linking Financial Risk Meter signals with pricing-kernel volatility and forward-looking market risk.}
+
+\project{Carbon Risk Dynamic Indicator (CARDI)}{Climate finance / ESG analytics}
+{Built a Quantile-LASSO network indicator to measure carbon-risk transmission, volatility-demand shifts and low-carbon premia across financial markets.}
+
+\project{Ethereum Development Milestones}{Digital assets / event analytics}
+{Evaluated market responses to Ethereum protocol upgrades, including return, volatility and spillover effects around major development milestones.}
+
+\project{Bond-Market Default Risk and Resource Allocation}{Credit risk / causal inference}
+{Studied how rigid payment expectations, implicit guarantees and default-risk networks affect bond-market pricing efficiency and financial-resource allocation.}
+
+\section{Experience}
+\cvrow{2024.12--present}{\textbf{Postdoctoral Researcher}, Laboratory of Energy Economics and Environmental Management, School of Energy and Environment, City University of Hong Kong. Hong Kong Scholars Program.}
+\cvrow{2023.02--present}{\textbf{Postdoctoral Researcher}, Business School, Sun Yat-sen University. Research on bond-market risk, institutional reform, machine-learning causal inference and capital allocation.}
+\cvrow{2023.12--present}{\textbf{Research Fellow}, IDA Institute for Digital Assets, Bucharest University of Economic Studies. Research on digital assets, financial risk and market design.}
+\cvrow{2021.01--2022.01}{\textbf{Visiting PhD Researcher}, Ladislaus von Bortkiewicz Chair of Statistics, Humboldt-Universit\"at zu Berlin. Research on risk measurement and quantitative methods.}
+
+\section{Selected Publications and Outputs}
+\begin{itemize}[leftmargin=1.1em,itemsep=2.2pt,topsep=1pt]
+\compactitem{\textbf{Wang, R.}, Poti, V. and Haerdle, W. K. (2024). Assessing network risk with FRM: Links with pricing kernel volatility and application to cryptocurrencies. \textit{Quantitative Finance}.}
+\compactitem{\textbf{Wang, R.}, Althof, M. and Haerdle, W. K. (2023). A financial risk meter for China. \textit{Emerging Markets Review}.}
+\compactitem{Chen, R., Liu, S., Nie, Z. and \textbf{Wang, R.} (2026). Bank deregulation and the rise of local government debt. \textit{Economic Modelling}.}
+\compactitem{\textbf{Wang, R.}, Haerdle, W. K. and Zhang, L. Measuring carbon risk dynamics. Working paper under review.}
+\compactitem{Huang, C., Bag, R., Pele, P., Petukhina, A., \textbf{Wang, R.} and Zuo, X. \textit{Applied Time Series Analysis and Forecasting with Python: Problems and Solutions}. Springer Nature, forthcoming.}
+\end{itemize}
+
+\section{Technical Toolkit}
+\begin{tabularx}{\linewidth}{@{}>{\sff\bfseries\color{plumdeep}}p{0.22\linewidth} X@{}}
+Programming & Python, R, Stata, MATLAB, \LaTeX.\\[3pt]
+Methods & Quantile regression, Lasso, double machine learning, network analysis, Kalman filtering, bootstrap and jackknife, event-study design, panel-data analysis, time-series forecasting.\\[3pt]
+Domains & Financial institutions, credit and bond markets, crypto assets, ESG and carbon risk, institutional reform, corporate finance, resource allocation.\\
+\end{tabularx}
+
+\section{Teaching, Communication and Service}
+\cvrow{Open learning}{Created Quantinar courses and courselets on machine learning in financial risk, FRM@China, FRM@Crypto, carbon-risk dynamics, Ethereum milestones, Kalman filtering, quantile regression and time-series methods.}
+\cvrow{Teaching}{Machine Learning in Financial Risk, Romania summer course; Digital Economy and Decision Analytics, Humboldt-Universit\"at zu Berlin; Probability Theory and Financial Markets, Sun Yat-sen University.}
+\cvrow{Editorial}{Associate Editor, \textit{Digital Finance}; Associate Editor and Special Issue Editor, \textit{Management \& Marketing}, Springer Nature special issue on Generative AI in Finance.}
+
+\section{Education}
+\cvrow{2018.09--2022.12}{\textbf{PhD in Finance}, Sun Yat-sen University. Dissertation on rigid payment, debt financing, capital misallocation and machine-learning causal inference.}
+\cvrow{2014.09--2017.06}{\textbf{MSc in Financial Management}, Zhongnan University of Economics and Law.}
+\cvrow{2010.09--2014.06}{\textbf{BSc in Financial Management}, Zhongnan University of Economics and Law.}
+
+\end{document}

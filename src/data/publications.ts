@@ -99,6 +99,7 @@ export const publications: Publication[] = [
     authors: 'Huang, C., Bag, R., Pele, P., Petukhina, A., Wang, R., & Zuo, X.',
     venue: 'Springer Nature',
     status: 'Forthcoming',
+    featured: true,
     category: 'book',
   },
   {
@@ -113,6 +114,19 @@ export const publications: Publication[] = [
 ];
 
 export const workingPapers: Publication[] = [
+  {
+    year: 2026,
+    title: 'Measuring the power consumption after “the Merge”',
+    researchTopics: ['Digital assets', 'Sustainability economics'],
+    authors: 'Woitschig, P., Wang, R., & Härdle, W. K.',
+    venue: 'Applied Energy',
+    status: 'Review and resubmitted',
+    statusVenue: 'Applied Energy',
+    statusDetail: 'IF 12.2, JCR Q1',
+    href: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4526732',
+    featured: true,
+    category: 'working',
+  },
   {
     year: 2026,
     title: 'Forced to resist? Firms’ AI exposure and the rise of labor disputes',
@@ -180,19 +194,6 @@ export const workingPapers: Publication[] = [
     authors: 'Xu, Y., Wang, R., Hao, X., Zhang, L., & Ho, A. T.',
     venue: 'One Earth',
     status: 'Under review',
-    category: 'working',
-  },
-  {
-    year: 2026,
-    title: 'Measuring the power consumption after “the Merge”',
-    researchTopics: ['Digital assets', 'Sustainability economics'],
-    authors: 'Woitschig, P., Wang, R., & Härdle, W. K.',
-    venue: 'Applied Energy',
-    status: 'Review and resubmitted',
-    statusVenue: 'Applied Energy',
-    statusDetail: 'IF 12.2, JCR Q1',
-    href: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4526732',
-    featured: true,
     category: 'working',
   },
   {
